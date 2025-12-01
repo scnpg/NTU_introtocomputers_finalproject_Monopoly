@@ -1,0 +1,130 @@
+class Tile {
+
+    static int PROPERTY;
+    static int TAX;
+    static int CHEST;
+    static int CHANCE;
+    static int PARKING;
+    static int JAIL;
+    static int GOTO_JAIL;
+    static int INFRASTRUCTURE;
+    static int GO;
+
+    field int type;
+    field PropertyTile pTile;
+    field TaxTile tTile;
+    field ChestTile cTile;
+    field ChanceTile chTile;
+    field InfrastructureTile iTile;
+    field GoTile goTile;
+    field JailTile jailTile;
+
+    function void initConstants() {
+        let PROPERTY = 0;
+        let TAX = 1;
+        let CHEST = 2;
+        let CHANCE = 3;
+        let PARKING = 4;
+        let JAIL = 5;
+        let GOTO_JAIL = 6;
+        let INFRASTRUCTURE = 7;
+        let GO = 8;
+        return;
+    }
+
+    constructor Tile newProperty(int price, int rent) {
+        let type = PROPERTY;
+        let pTile = PropertyTile.new(price, rent);
+        return this;
+    }
+
+    constructor Tile newTax(int amount) {
+        let type = TAX;
+        let tTile = TaxTile.new(amount);
+        return this;
+    }
+
+    constructor Tile newChest(Deck deck) {
+        let type = CHEST;
+        let cTile = ChestTile.new(deck);
+        return this;
+    }
+
+    constructor Tile newChance(Deck deck) {
+        let type = CHANCE;
+        let chTile = ChanceTile.new(deck);
+        return this;
+    }
+
+    constructor Tile newInfrastructure(int cost) {
+        let type = INFRASTRUCTURE;
+        let iTile = InfrastructureTile.new(cost);
+        return this;
+    }
+
+    constructor Tile newGo() {
+        let type = GO;
+        let goTile = GoTile.new();
+        return this;
+    }
+
+    constructor Tile newJail() {
+        let type = JAIL;
+        let jailTile = JailTile.new();
+        return this;
+    }
+
+    constructor Tile newGoToJail(JailTile jail) {
+        let type = GOTO_JAIL;
+        let jailTile = jail;
+        return this;
+    }
+
+    constructor Tile newParking() {
+        let type = PARKING;
+        return this;
+    }
+
+    method void activate(Player p) {
+        if (type = PROPERTY) {
+            do pTile.activate(p);
+            return;
+        }
+        if (type = TAX) {
+            do tTile.activate(p);
+            return;
+        }
+        if (type = CHEST) {
+            do cTile.activate(p);
+            return;
+        }
+        if (type = CHANCE) {
+            do chTile.activate(p);
+            return;
+        }
+        if (type = INFRASTRUCTURE) {
+            do iTile.activate(p);
+            return;
+        }
+        if (type = GO) {
+            do goTile.activate(p);
+            return;
+        }
+        if (type = JAIL) {
+            do jailTile.activate(p);
+            return;
+        }
+        if (type = GOTO_JAIL) {
+            do jailTile.activate(p);
+            return;
+        }
+        if (type = PARKING) {
+            return;
+        }
+        return;
+    }
+
+    method int getType() {
+        return type;
+    }
+}
