@@ -1,0 +1,18 @@
+class TaxTile {
+
+    field int taxAmount; 
+
+    constructor TaxTile new(int amount) {
+        let taxAmount = amount;
+        return this;
+    }
+
+    method void activate(Player p, Board board) {
+        do p.pay(taxAmount, board);
+        return;
+    }
+    
+    method int getTaxAmount() {
+        return taxAmount;
+    }
+}
