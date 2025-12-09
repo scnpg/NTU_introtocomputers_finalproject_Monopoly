@@ -44,6 +44,10 @@ class Player {
         return;
     }
 
+   method void moveTo(int space){
+      let location = space;
+   }
+
     // 交錢 (Pay)
     method void pay(int amount) {
         let balance = balance - amount;
@@ -143,6 +147,7 @@ class Player {
         return id;
     }
 }
+
 
 
 
