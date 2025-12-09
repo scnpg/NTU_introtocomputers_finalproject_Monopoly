@@ -1,0 +1,52 @@
+class Game{
+
+    field Array players;
+
+    constructor Game new() {
+        let players = Array.new(4);
+        let players[0] = Player.new();
+        let players[1] = Player.new(); 
+        let players[2] = Player.new();
+        let players[3] = Player.new();
+
+        return this;
+    }
+
+    function int dice() {
+        var int n;
+        let n=5;
+        while (~(Keyboard.keyPressed())) {
+            let n=n+1;
+            if (n = 6) {
+                let n=0;
+            }
+        }
+        return (n);
+    }
+
+    method void printPlayerInfo(){
+        var int index;
+        var int id;
+        var int balance;
+        var Player player;
+        let index = 0;
+        while ( index < 4 ){
+            let player = players[index];
+            let id = player.getID();
+            let balance = player.getBalance();
+            do Output.moveCursor(1+(4*index), 45);
+            do Output.printString("Player ");
+            do Output.printInt(id);
+            do Output.moveCursor(1+(4*index)+1, 45);
+            do Output.printString(" balance: $");
+            do Output.printInt(balance);
+            let index = index + 1;
+        }
+        return;
+    }
+
+    method Player getPlayer(int index) {
+        return players[index];
+    }
+
+}

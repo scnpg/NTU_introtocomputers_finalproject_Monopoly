@@ -1,0 +1,37 @@
+class Main{
+
+    function void printCenter(String text, int heigh) {
+        var int len;
+        var int col;
+        let len = text.length();
+        // 計算起始行數：(總寬度 64 - 文字長度) / 2
+        let col = (64 - len) / 2;
+        // 移動游標到螢幕中間
+        do Output.moveCursor(heigh, col);
+        do Output.printString(text);
+        
+        return;
+    }
+
+    function void main(){
+        var int heigh;
+        var int key;
+        var Game game;
+        let heigh = 10;
+        do Main.printCenter("MONOPOLY", heigh);
+        let heigh = heigh + 2;
+        do Main.printCenter("press enter to start game!", heigh);
+        let key = 0;
+        while(~(key = 128)){
+            let key = Keyboard.keyPressed();
+        }
+        do Screen.clearScreen();
+        do Main.printCenter("Game Start!", 11);
+        do Sys.wait(1000);
+        do Screen.clearScreen();
+        let game = Game.new();
+        do game.printPlayerInfo();
+        return;
+    }
+
+}
