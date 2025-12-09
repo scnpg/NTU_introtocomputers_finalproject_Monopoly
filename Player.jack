@@ -1,16 +1,16 @@
 class Player {
 
-   
     static int idCounter;
 
     field int id;
     field int location;
     field int balance;
     field boolean inJail;
-    field int getOutJails; 
-    field int infras;    
-    field int trains;  
+    field int getOutJails;
+    field int infras;
+    field int trains;
     field int jailTurns;
+    field int numHouses;
 
     constructor Player new() {
         let id = idCounter;
@@ -18,7 +18,7 @@ class Player {
 
         let location = 0;
         let inJail = false;
-        let balance = 1500; 
+        let balance = 1500;
         
         let getOutJails = 0;
         let infras = 0;
@@ -37,20 +37,26 @@ class Player {
         let location = location + steps;
         
         if (location >= boardSize) {
-            let location = location % boardSize; 
-            do receive(200);                 
+            let location = location % boardSize;
+            do receive(200); // Collect $200 for passing GO
         }
         
         return;
     }
 
-   method void moveTo(int space){
-      let location = space;
-   }
+    method void moveTo(int space) {
+        let location = space;
+        return;
+    }
 
     // 交錢 (Pay)
-    method void pay(int amount) {
+    method void pay(int amount, Board board) {
         let balance = balance - amount;
+        
+        // Check for bankruptcy
+        if (balance < 0) {
+            do board.handleBankruptcy(this);
+        }
         return;
     }
 
@@ -69,18 +75,18 @@ class Player {
     }
 
     // 買土地 (Buy Regular Property)
-    method void buyProperty(PropertyTile p, int price) {
+    method void buyProperty(PropertyTile p, int price, Board board) {
         if (canAfford(price)) {
-            do pay(price);
+            do pay(price, board);
             do p.setOwner(this);
         }
         return;
     }
     
     // 買設施 (Buy Infrastructure/Utility)
-    method void buyInfrastructure(InfrastructureTile i, int price) {
+    method void buyInfrastructure(InfrastructureTile i, int price, Board board) {
         if (canAfford(price)) {
-            do pay(price);
+            do pay(price, board);
             do i.setOwner(this);
             let infras = infras + 1;
         }
@@ -88,25 +94,33 @@ class Player {
     }
     
     // 買火車 (Buy Train/Railroad)
-    method void buyTrain(TrainTile t, int price) {
+    method void buyTrain(TrainTile t, int price, Board board) {
         if (canAfford(price)) {
-            do pay(price);
+            do pay(price, board);
             do t.setOwner(this);
             let trains = trains + 1;
         }
         return;
     }
 
-    // 坐牢 (Go To Jail)
+    // 坐牢 (Go To Jail) - FIX: Reset jailTurns
     method void goToJail() {
         let inJail = true;
         let location = 10;
+        let jailTurns = 0;
         return;
     }
 
-    // 被釋放 (Leave Jail)
+    // 被釋放 (Leave Jail) - FIX: Reset jailTurns
     method void leaveJail() {
         let inJail = false;
+        let jailTurns = 0;
+        return;
+    }
+    
+    // Track turns spent in jail
+    method void incrementJailTurns() {
+        let jailTurns = jailTurns + 1;
         return;
     }
     
@@ -116,10 +130,12 @@ class Player {
         return;
     }
 
-    //使用Get out Jail
+    //使用Get out Jail - FIX: Added safety check
     method void useGetOutOfJailCard() {
-        let getOutJails = getOutJails - 1;
-        do leaveJail();
+        if (getOutJails > 0) {
+            let getOutJails = getOutJails - 1;
+            do leaveJail();
+        }
         return;
     }
 
@@ -146,8 +162,12 @@ class Player {
     method int getID() {
         return id;
     }
+    
+    method int getJailTurns() {
+        return jailTurns;
+    }
+
+   method int getNumHouses(){
+      return numHouses;
+   }
 }
-
-
-
-
