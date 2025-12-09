@@ -67,7 +67,6 @@ class Player {
         if (canAfford(price)) {
             do pay(price);
             do p.setOwner(this);
-            // NOTE: The logic for tracking color group completeness will likely be in PropertyTile
         }
         return;
     }
@@ -95,8 +94,7 @@ class Player {
     // 坐牢 (Go To Jail)
     method void goToJail() {
         let inJail = true;
-        let location = 10; // Assuming Jail is at index 10
-        // NOTE: Must also cancel any "Pass Go" money for this turn if called directly.
+        let location = 10;
         return;
     }
 
@@ -143,3 +141,4 @@ class Player {
         return id;
     }
 }
+
