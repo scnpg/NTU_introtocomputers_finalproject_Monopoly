@@ -12,6 +12,136 @@ class Game{
         return this;
     }
 
+    function void drawMap(){
+        
+        //corners and center
+        do Screen.drawRectangle(0, 0, 255, 255); //boarder
+        do Screen.setColor(0);
+        do Screen.drawRectangle(44, 44, 212, 212); //inner-square
+        do Screen.drawRectangle(2, 2, 41, 41); //up-left
+        do Screen.drawRectangle(215, 2, 253, 41); //up-right
+        do Screen.drawRectangle(2, 215, 41, 253); //down-left
+        do Screen.drawRectangle(215, 215, 253, 253); //down-right
+        do Screen.drawRectangle(44, 2, 212, 41); //top-road
+        do Screen.drawRectangle(2, 44, 41, 212); //leftward-road
+        do Screen.drawRectangle(215, 44, 253, 212); //rightward-road
+        do Screen.drawRectangle(44, 215, 212, 253); //bottom-road
+
+        do Screen.setColor(1);
+        do Screen.drawRectangle(44, 35, 212, 35); //up
+        do Screen.drawRectangle(35, 44, 35, 212); //left
+        do Screen.drawRectangle(221, 44, 221, 212); //right
+        do Screen.drawRectangle(44, 221, 212, 221); //down
+
+        do Screen.drawRectangle(62, 2, 62, 253); //ver1
+        do Screen.drawRectangle(81, 2, 81, 253); //ver2
+        do Screen.drawRectangle(100, 2, 100, 253); //ver3
+        do Screen.drawRectangle(119, 2, 119, 253); //ver4
+        do Screen.drawRectangle(138, 2, 138, 253); //ver5
+        do Screen.drawRectangle(157, 2, 157, 253); //ver6
+        do Screen.drawRectangle(176, 2, 176, 253); //ver7
+        do Screen.drawRectangle(195, 2, 195, 253); //ver8
+
+        do Screen.drawRectangle(2, 62, 253, 62); //hor1
+        do Screen.drawRectangle(2, 81, 253, 81); //hor2
+        do Screen.drawRectangle(2, 100, 253, 100); //hor3
+        do Screen.drawRectangle(2, 119, 253, 119); //hor4
+        do Screen.drawRectangle(2, 138, 253, 138); //hor5
+        do Screen.drawRectangle(2, 157, 253, 157); //hor6
+        do Screen.drawRectangle(2, 176, 253, 176); //hor7
+        do Screen.drawRectangle(2, 195, 253, 195); //hor8
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(44, 44, 212, 212); //inner-square
+
+        do Screen.setColor(1);
+        do Game.drawProperties(1, 138, 214);
+        do Game.drawProperties(1, 176, 214);
+        do Game.drawProperties(1, 195, 214);
+
+        do Game.drawProperties(2, 43, 214);
+        do Game.drawProperties(2, 81, 214);
+        do Game.drawProperties(2, 100, 214);
+
+        do Game.drawProperties(3, 43, 35);
+        do Game.drawProperties(3, 81, 35);
+        do Game.drawProperties(3, 100, 35);
+
+        do Game.drawProperties(4, 138, 35);
+        do Game.drawProperties(4, 176, 35);
+        do Game.drawProperties(4, 195, 35);
+
+        do Game.drawProperties(5, 35, 43);
+        do Game.drawProperties(5, 35, 81);
+        do Game.drawProperties(5, 35, 100);
+
+        do Game.drawProperties(6, 35, 138);
+        do Game.drawProperties(6, 35, 176);
+        do Game.drawProperties(6, 35, 195);
+
+        do Game.drawProperties(7, 214, 43);
+        do Game.drawProperties(7, 214, 81);
+        do Game.drawProperties(7, 214, 100);
+
+
+        return;
+    }
+
+    function void drawProperties(int category, int x, int y){
+        var int memAddress;
+        var int xWordOffset;
+        
+        if (category = 1) { //cross
+            do Screen.drawRectangle(x+1, y+3, x+18, y+4);
+            do Screen.drawRectangle(x+9, y+1, x+10, y+6);
+        }
+
+        if (category = 2) { //thin stripe
+            do Screen.drawRectangle(x+1, y+2, x+18, y+2);
+            do Screen.drawRectangle(x+1, y+5, x+18, y+5);
+        }
+
+        if (category = 3) { //chess
+            do Screen.drawRectangle(x+1, y+1, x+3, y+3);
+            do Screen.drawRectangle(x+7, y+1, x+9, y+3);
+            do Screen.drawRectangle(x+13, y+1, x+15, y+3);
+            do Screen.drawRectangle(x+4, y+4, x+6, y+6);
+            do Screen.drawRectangle(x+10, y+4, x+12, y+6);
+            do Screen.drawRectangle(x+16, y+4, x+18, y+6);
+	        return;
+        }
+
+        
+        if (category = 4) { //diagonal cross
+            do Screen.drawRectangle(x+1, y+1, x+4, y+1);
+            do Screen.drawRectangle(x+15, y+1, x+18, y+1);
+            do Screen.drawRectangle(x+4, y+2, x+7, y+2);
+            do Screen.drawRectangle(x+12, y+2, x+15, y+2);
+            do Screen.drawRectangle(x+7, y+3, x+12, y+4);
+            do Screen.drawRectangle(x+1, y+6, x+4, y+6);
+            do Screen.drawRectangle(x+15, y+6, x+18, y+6);
+            do Screen.drawRectangle(x+4, y+5, x+7, y+5);
+            do Screen.drawRectangle(x+12, y+5, x+15, y+5);
+        }
+
+        if (category = 5) { //three squares
+            do Screen.drawRectangle(x+2, y+2, x+5, y+5);
+            do Screen.drawRectangle(x+2, y+8, x+5, y+11);
+            do Screen.drawRectangle(x+2, y+14, x+5, y+17);
+        }
+
+        if (category = 6) { //thick stripe
+            do Screen.drawRectangle(x+1, y+4, x+6, y+6);
+            do Screen.drawRectangle(x+1, y+13, x+6, y+15);
+        }
+
+        if (category = 7) { //black
+            do Screen.drawRectangle(x+1, y+1, x+6, y+18);
+        }
+
+        return;
+    }
+
     method void printPlayerInfo(){
         var int index;
         var int id;
@@ -127,6 +257,7 @@ class Game{
         var int pips;
         do printPlayerInfo();
         do Game.drawDice();
+        do Game.drawMap();
         let pips = Game.rollDice(0);
         do Sys.wait(500);
         let pips = pips + Game.rollDice(1);
