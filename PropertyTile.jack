@@ -1,0 +1,76 @@
+class PropertyTile {
+
+    field int price;
+    field int baseRent;
+    field int houses;        
+    field int houseCost;
+    field Player owner;
+
+    constructor PropertyTile new(int p, int r, int h) {
+        let price = p;
+        let baseRent = r;
+        let houseCost = h;
+        let houses = 0;
+        let owner = null;
+        return this;
+    }
+
+    method void activate(Player p, Board board) {
+
+        // No owner, attempt to buy
+        if (owner = null) {
+            do p.buyProperty(this, price, board);
+            return;
+        }
+
+        // Owned by someone else, pay rent
+        if (~(owner = p)) {
+            do p.pay(getRent(), board);
+            do owner.receive(getRent());
+            return;
+        }
+
+        // Owned by self, nothing happens
+        return;
+    }
+
+    method void addHouse() {
+        if (houses < 5) {
+            let houses = houses + 1;
+        }
+        return;
+    }
+
+    method int getRent() {
+        if (houses = 0) {
+            return baseRent;
+        }
+        if (houses = 1) {
+            return baseRent * 2;
+        }
+        if (houses = 2) {
+            return baseRent * 3;
+        }
+        if (houses = 3) {
+            return baseRent * 4;
+        }
+        if (houses = 4) {
+            return baseRent * 5;
+        }
+        
+        return baseRent * 6;
+    }
+
+    method int getHouseCost() {
+        return houseCost;
+    }
+
+    method Player getOwner() {
+        return owner;
+    }
+
+    method void setOwner(Player p) {
+        let owner = p;
+        return;
+    }
+}
