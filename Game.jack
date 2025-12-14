@@ -49,6 +49,9 @@ class Game{
         do Screen.drawRectangle(2, 176, 253, 176); //hor7
         do Screen.drawRectangle(2, 195, 253, 195); //hor8
 
+        do Screen.drawRectangle(22, 233, 41, 233); //Prison cell
+        do Screen.drawRectangle(22, 215, 22, 233); 
+
         do Screen.setColor(0);
         do Screen.drawRectangle(44, 44, 212, 212); //inner-square
 
@@ -100,6 +103,16 @@ class Game{
         do Game.drawChance2(62,35);
         do Game.drawTax(221, 177);
         do Game.drawTax2(35, 63);
+        do Game.drawElectricity(35, 175);
+        do Game.drawWater(157, 35);
+        do Game.drawGoToJail(226,4);
+
+        //Textbox
+        do Screen.drawRectangle(65, 97, 192, 160);
+        do Screen.setColor(0);
+        do Screen.drawRectangle(66, 98, 191, 159);
+
+        do Screen.setColor(1);
 
         return;
     }
@@ -381,6 +394,83 @@ class Game{
         do Screen.drawPixel(x - 4, y + 15);
     
         return;
+    }
+
+    function void drawElectricity(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x-10, y-13, x-1, y-4);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x, y-17, x, y);
+        do Screen.drawRectangle(x-9, y-12, x-2, y-5);
+        do Screen.drawPixel(x-10, y-4);
+        do Screen.drawPixel(x-1, y-4);
+        do Screen.drawPixel(x-10, y-13);
+        do Screen.drawPixel(x-1, y-13);
+
+        do Screen.setColor(1);
+        do Screen.drawPixel(x-9, y-12);
+        do Screen.drawPixel(x-2, y-12);
+        do Screen.drawPixel(x-9, y-5);
+        do Screen.drawPixel(x-2, y-5);
+        
+        do Screen.drawPixel(x-5, y-7);
+        do Screen.drawPixel(x-5, y-10);
+        do Screen.drawRectangle(x-7, y-6, x-6, y-6);
+        do Screen.drawRectangle(x-6, y-9, x-6, y-8);
+        do Screen.drawRectangle(x-7, y-11, x-6, y-11);
+
+        do Screen.drawRectangle(x-11, y-11, x-11, y-6);
+        do Screen.drawRectangle(x-13, y-10, x-13, y-7);
+        do Screen.drawRectangle(x-15, y-10, x-15, y-7);
+        do Screen.drawRectangle(x-16, y-9, x-16, y-8);
+
+	    return;
+    }
+
+    function void drawWater(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+9, y-2, x+10, y-1);
+        do Screen.drawRectangle(x+8, y-4, x+11, y-3);
+        do Screen.drawRectangle(x+7, y-15, x+12, y-5);
+        do Screen.drawRectangle(x+6, y-14, x+13, y-8);
+        do Screen.drawRectangle(x+5, y-13, x+14, y-10);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+1, y, x+18, y);
+        do Screen.drawPixel(x+8, y-14);
+        do Screen.drawPixel(x+7, y-13);
+        do Screen.drawPixel(x+7, y-12);
+        do Screen.drawPixel(x+7, y-10);
+
+        do Screen.setColor(1);
+        
+	    return;
+    }
+
+    function void drawGoToJail(int x, int y){
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+4, x+13, y+16);
+        do Screen.drawRectangle(x+3, y+1, x+16, y+1);
+        do Screen.drawRectangle(x+16, y+1, x+16, y+13);
+        do Screen.drawPixel(x+2, y+2);
+        do Screen.drawPixel(x+1, y+3);
+        do Screen.drawPixel(x+14, y+15);
+        do Screen.drawPixel(x+15, y+14);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+5, x+12, y+15);
+
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+3, y+6, x+11, y+14);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+4, y+7, x+10, y+7);
+        do Screen.drawRectangle(x+4, y+10, x+10, y+10);
+
+        do Screen.setColor(1);
+        
+	    return;
     }
 
     function void drawPlayer(int id, int x, int y){ //畫出玩家位置
