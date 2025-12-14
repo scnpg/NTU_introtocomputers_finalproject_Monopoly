@@ -33,8 +33,8 @@ class Board{
         let tiles[14]=Tile.newProperty(160,12,80);
         let tiles[15]=Tile.newTrain(200);
         let tiles[16]=Tile.newProperty(180,14,100);
-        let tiles[18]=Tile.newProperty(180,14,100);
-        let tiles[17]=Tile.newTax(150);
+        let tiles[17]=Tile.newProperty(180,14,100);
+        let tiles[18]=Tile.newTax(150);
         let tiles[19]=Tile.newProperty(200,16,100);
         let tiles[20]=Tile.newParking();
         let tiles[21]=Tile.newProperty(220,18,130);
@@ -43,13 +43,13 @@ class Board{
         let tiles[24]=Tile.newProperty(240,20,130);
         let tiles[25]=Tile.newTrain(200);
         let tiles[26]=Tile.newProperty(260,22,150);
-        let tiles[28]=Tile.newInfrastructure(150);
-        let tiles[27]=Tile.newProperty(260,22,150);
+        let tiles[27]=Tile.newInfrastructure(150);
+        let tiles[28]=Tile.newProperty(260,22,150);
         let tiles[29]=Tile.newProperty(280,24,150);
         let tiles[30]=Tile.newGoToJail();
         let tiles[31]=Tile.newProperty(300,26,180);
-        let tiles[33]=Tile.newChest(null);
-        let tiles[32]=Tile.newProperty(300,26,180);
+        let tiles[32]=Tile.newChest(null);
+        let tiles[33]=Tile.newProperty(300,26,180);
         let tiles[34]=Tile.newProperty(320,28,180);
         let tiles[35]=Tile.newTrain(200);
         let tiles[36]=Tile.newProperty(340,34,200);
@@ -76,7 +76,7 @@ class Board{
         return;
     }
     method void handleBankruptcy(Player p) {
-        var i;
+        var int i;
         var Tile t;
         let i = 0;
         while (i < size) {
@@ -104,6 +104,19 @@ class Board{
             }
             let i=i+1;
         }
+        return;
+    }
+    method void dispose() {
+        var int i;
+        var Tile t;
+        let i = 0;
+        while (i < size) {
+            let t = tiles[i];
+            do t.dispose(); // 清除每一格
+            let i = i + 1;
+        }
+        do tiles.dispose(); // 清除陣列
+        do Memory.deAlloc(this); // 清除自己
         return;
     }
 }
