@@ -1,6 +1,7 @@
 class Game{
 
     field Array players;
+	field Board board;
 
     constructor Game new() {
         let players = Array.new(4);
@@ -8,6 +9,9 @@ class Game{
         let players[1] = Player.new(); 
         let players[2] = Player.new();
         let players[3] = Player.new();
+
+		let board = Board.new();  
+        do board.setPlayer(players, 4);
 
         return this;
     }
@@ -665,24 +669,44 @@ class Game{
     // }
 
     method void start() {
-        var int pips;
-        do printPlayerInfo();
-        do Game.drawDice();
-        do Game.drawMap();
-        let pips = Game.rollDice(0);
-        do Sys.wait(500);
-        let pips = pips + Game.rollDice(1);
-        // do Game.drawPips(1, 1);
-        // do Sys.wait(500);
-        // do Game.drawPips(2, 1);
-        // do Sys.wait(500);
-        // do Game.drawPips(3, 1);
-        // do Sys.wait(500);
-        // do Game.drawPips(4, 1);
-        // do Sys.wait(500);
-        // do Game.drawPips(5, 1);
-        // do Sys.wait(500);
-        // do Game.drawPips(6, 1);
-        return;
+		var int pips;
+		var int turn;
+		var Player currentPlayer;
+		let turn=0;
+
+		while(true) {
+			let currentPlayer=players[turn];
+	        do printPlayerInfo();
+	        do Game.drawDice();
+	        do Game.drawMap();
+	        let pips = Game.rollDice(0);
+	        do Sys.wait(500);
+	        let pips = pips + Game.rollDice(1);
+			// do Game.drawPips(1, 1);
+	        // do Sys.wait(500);
+	        // do Game.drawPips(2, 1);
+	        // do Sys.wait(500);
+	        // do Game.drawPips(3, 1);
+	        // do Sys.wait(500);
+	        // do Game.drawPips(4, 1);
+	        // do Sys.wait(500);
+	        // do Game.drawPips(5, 1);
+	        // do Sys.wait(500);
+	        // do Game.drawPips(6, 1);
+	
+		    do currentPlayer.move(pips, 40);
+			do board.handleLanding(currentPlayer);
+			do Sys.wait(1000);
+	
+			do Screen.clearScreen(); 
+	        do Game.drawMap();
+	
+			let turn=turn+1;
+			if(turn = 4) {
+			let turn=0;
+	        }
+        }
+		return;
     }
+	
 }
