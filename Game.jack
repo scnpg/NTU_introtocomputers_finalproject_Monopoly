@@ -475,46 +475,6 @@ class Game{
 	    return;
     }
 
-    function void drawPlayer(int id, int x, int y){ //畫出玩家位置
-        if (id = 1){ //spade
-            do Screen.drawRectangle(x+4, y+1, x+5, y+1);
-            do Screen.drawRectangle(x+3, y+2, x+6, y+2);
-            do Screen.drawRectangle(x+2, y+3, x+7, y+3);
-            do Screen.drawRectangle(x+1, y+4, x+8, y+6);
-            do Screen.drawRectangle(x+4, y+7, x+5, y+7);
-            do Screen.drawRectangle(x+3, y+8, x+6, y+8);
-        }
-
-        if (id = 2){ //heart
-            do Screen.drawRectangle(x+2, y+2, x+3, y+2);
-            do Screen.drawRectangle(x+6, y+2, x+7, y+2);
-            do Screen.drawRectangle(x+1, y+3, x+8, y+5);
-            do Screen.drawRectangle(x+2, y+6, x+6, y+6);
-            do Screen.drawRectangle(x+3, y+7, x+5, y+7);
-            do Screen.drawRectangle(x+4, y+8, x+4, y+8);
-        }
-
-        if (id = 3){ //diamond
-            do Screen.drawRectangle(x+5, y+1, x+5, y+1);
-            do Screen.drawRectangle(x+4, y+2, x+6, y+2);
-            do Screen.drawRectangle(x+3, y+3, x+7, y+3);
-            do Screen.drawRectangle(x+2, y+4, x+8, y+5);
-            do Screen.drawRectangle(x+3, y+6, x+7, y+6);
-            do Screen.drawRectangle(x+4, y+7, x+6, y+7);
-            do Screen.drawRectangle(x+5, y+8, x+5, y+8);
-        }
-
-        if (id = 4){ //club
-            do Screen.drawRectangle(x+3, y+1, x+6, y+5);
-            do Screen.drawRectangle(x+1, y+3, x+2, y+6);
-            do Screen.drawRectangle(x+7, y+3, x+8, y+6);
-            do Screen.drawRectangle(x+4, y+6, x+5, y+7);
-            do Screen.drawRectangle(x+3, y+8, x+6, y+8);
-        }
-
-        return;
-    }
-
     function void drawOwner(int id, int x, int y){ //畫出地產擁有者圖示(未完成)
         if (id = 1){ //spade
             do Screen.drawRectangle(x+3, y+1, x+3, y+5);
