@@ -1,69 +1,121 @@
 class ChestTile {
-    
-    method void activate (Player player, Board board) {
-        var int houses;
-        var int housesprice;
-        var int n;
 
-        let n=1;
+    constructor ChestTile new() {
+        return this;
+    }
+
+    method void activate(Player p, Board board) {
+        var int c;
+        var int houses;
+        var int cost;
+
+        let c = 0;
+
+        // Random number generation using timing
         while (~(Keyboard.keyPressed())) {
-            let n=n+1;
-            if (n = 17) {
-                let n=1;
+            let c = c + 1;
+        }
+
+        // Modulo 16
+        let c = c - (16 * (c / 16));
+
+        if (c = 0) {
+            // Advance to GO
+            do p.moveTo(0);
+            do board.tiles[0].activate(p, board);
+        }
+        else {
+            if (c = 1) {
+                // Bank error in your favor
+                do p.receive(200);
             }
-        }
-        if (n = 1) {
-            do player.moveTo(0);
-        }
-        if (n = 2) {
-            do player.receive(200);
-        }
-        if (n = 3) {
-            do player.pay(50);
-        }
-        if (n = 4) {
-            do player.receive(50);
-        }
-        if (n = 5) {
-            do player.addGetOutOfJailCard();
-        }
-        if (n = 6) {
-            do player.goToJail();
-        }
-        if (n = 7) {
-            do player.receive(100);
-        }
-        if (n = 8) {
-            do player.receive(20);
-        }
-        if (n = 9) {
-            do board.receiveFromOther(player,10);                  //還沒做
-        }
-        if (n = 10) {
-            do player.receive(100);
-        }
-        if (n = 11) {
-            do player.pay(100);
-        }
-        if (n = 12) {
-            do player.pay(50);
-        }
-        if (n = 13) {
-            do player.receive(25);
-        }
-        if (n = 14) {
-            let houses = player.getNumHouses();
-            let housesprice=Math.multiply(40, houses);
-            do player.pay(housesprice);
-        }
-        if (n = 15) {
-            do player.receive(10);
-        }
-        if (n = 16) {
-            do player.receive(100);
+            else {
+                if (c = 2) {
+                    // Doctor's fees
+                    do p.pay(50, board);
+                }
+                else {
+                    if (c = 3) {
+                        // Sale of stock
+                        do p.receive(50);
+                    }
+                    else {
+                        if (c = 4) {
+                            // Get Out of Jail Free
+                            do p.addGetOutOfJailCard();
+                        }
+                        else {
+                            if (c = 5) {
+                                // Go to Jail
+                                do p.goToJail();
+                            }
+                            else {
+                                if (c = 6) {
+                                    // Holiday fund matures
+                                    do p.receive(100);
+                                }
+                                else {
+                                    if (c = 7) {
+                                        // Income tax refund
+                                        do p.receive(20);
+                                    }
+                                    else {
+                                        if (c = 8) {
+                                            // It is your birthday
+                                            do board.receiveFromOther(p, 10);
+                                        }
+                                        else {
+                                            if (c = 9) {
+                                                // Life insurance matures
+                                                do p.receive(100);
+                                            }
+                                            else {
+                                                if (c = 10) {
+                                                    // Hospital fees
+                                                    do p.pay(100, board);
+                                                }
+                                                else {
+                                                    if (c = 11) {
+                                                        // School fees
+                                                        do p.pay(50, board);
+                                                    }
+                                                    else {
+                                                        if (c = 12) {
+                                                            // Consultancy fee
+                                                            do p.receive(25);
+                                                        }
+                                                        else {
+                                                            if (c = 13) {
+                                                                // Street repairs
+                                                                let houses = p.getNumHouses();
+                                                                let cost = Math.multiply(40, houses);
+                                                                do p.pay(cost, board);
+                                                            }
+                                                            else {
+                                                                if (c = 14) {
+                                                                    // Beauty contest
+                                                                    do p.receive(10);
+                                                                }
+                                                                else {
+                                                                    if (c = 15) {
+                                                                        // Inheritance
+                                                                        do p.receive(100);
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         return;
     }
-
 }
-
