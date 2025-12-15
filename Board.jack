@@ -4,6 +4,7 @@ class Board{
     field int jailPos;
     field Array players;
     field int playerCounts;
+    field int sum;
 
 
     constructor Board new() {
@@ -105,6 +106,55 @@ class Board{
             let i=i+1;
         }
         return;
+    }
+    method void rollDice() {
+        var int n;
+        do Output.moveCursor(19, 35);
+        do Output.printString("Press any");
+        do Output.moveCursor(20, 35);
+        do Output.printString("key to stop");
+        do Output.moveCursor(21, 35);
+        do Output.printString("the dice");
+        let n=0;
+        let sum=0;
+        while (~(Keyboard.keyPressed())) {
+            let n=n+1;
+            if (n > 6) {
+                let n=1;
+            }
+            do Game.drawPips(n, 0);
+        }
+        let sum = n;
+        do Screen.setColor(0);
+        do Screen.drawRectangle(280, 205, 370, 250);
+        do Output.moveCursor(20, 35);
+        do Output.printString("Wait");
+        do Sys.wait(500);
+        do Screen.setColor(0);
+        do Screen.drawRectangle(280, 205, 370, 250);
+        do Output.moveCursor(19, 35);
+        do Output.printString("Press any");
+        do Output.moveCursor(20, 35);
+        do Output.printString("key to stop");
+        do Output.moveCursor(21, 35);
+        do Output.printString("the dice");
+        while (~(Keyboard.keyPressed())) {
+            let n=n+1;
+            if (n > 6) {
+                let n=1;
+            }
+            do Game.drawPips(n, 1);
+        }
+        let sum = sum + n;
+        do Screen.setColor(0);
+        do Screen.drawRectangle(280, 205, 370, 250);
+        do Output.moveCursor(20, 35);
+        do Output.printString("Get ");
+        do Output.printInt(sum);
+        do Output.printString(" pips!");
+    }
+    method int getDiceSum() {
+        return sum;
     }
     method void dispose() {
         var int i;
