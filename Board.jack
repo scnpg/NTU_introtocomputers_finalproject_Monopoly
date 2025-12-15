@@ -68,6 +68,7 @@ class Board{
         let t=tiles[loc];
 
         do t.activate(p,this);
+        do Sys.wait(1000);
         return;
     }
 

@@ -712,7 +712,7 @@ class Game{
 
             do Sys.wait(5000);
 
-            let currentPlayer = currentPlayer+1;
+            let nowIndex = nowIndex+1;
             if (nowIndex = 4){
                 let nowIndex = 0;
             }
