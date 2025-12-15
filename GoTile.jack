@@ -1,0 +1,10 @@
+class GoTile {
+    constructor GoTile new() {
+        return this;
+    }
+
+    method void activate(Player p) {
+        do p.collect(200);
+        return;
+    }
+}
