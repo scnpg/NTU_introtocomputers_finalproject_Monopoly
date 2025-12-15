@@ -37,8 +37,8 @@ class Player {
         do Player.drawClearPlayer(xCoordinate[location], yCoordinate[location]);
         let location = location + steps;
         
-        if (location >= boardSize) {
-            let location = location % boardSize;
+        if (~(location < boardSize)) {
+            let location = location - (boardSize * (location / boardSize));
             do receive(200); // Collect $200 for passing GO
         }
         do Player.drawPlayer(id, xCoordinate[location], yCoordinate[location]);
@@ -70,7 +70,7 @@ class Player {
 
     // 買不買得起 (Can Afford)
     method boolean canAfford(int amount) {
-        if (balance >= amount) {
+        if (~(balance < amount)) {
             return true;
         }
         return false;
@@ -194,6 +194,10 @@ class Player {
 
     method int getNumHouses(){
         return numHouses;
+    }
+
+    method int getGetOutJails(){
+        return getOutJails;
     }
 
     function void drawClearPlayer(int x, int y){
