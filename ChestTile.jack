@@ -22,7 +22,9 @@ class ChestTile {
                let c=0;
             }
         }
-
+        do Screen.setColor(false);
+        do Screen.drawRectangle(50, 70, 400, 160);
+        do Screen.setColor(true);
         
 
         if (c = 0) {
@@ -206,6 +208,8 @@ class ChestTile {
         return;
     }
 }
+
+
 
 
 
