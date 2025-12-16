@@ -29,10 +29,13 @@ class PropertyTile {
             do Output.printString("Press Y to buy it");
             do Output.moveCursor(11, 7);
             do Output.printString("Press N to skip it");
+            do Sys.wait(25);
             while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
                 let buy = Keyboard.keyPressed();
             }
+            do Sys.wait(25);
             if (buy = 89 | buy = 121){
+                do Sys.wait(25);
                 do p.buyProperty(this, price, board);
             }
             return;
@@ -40,6 +43,7 @@ class PropertyTile {
 
         // Owned by someone else, pay rent
         if (~(owner = p)) {
+            do Sys.wait(25);
             do p.pay(getRent(), board);
             do owner.receive(getRent());
             return;
@@ -85,6 +89,7 @@ class PropertyTile {
     }
 
     method void setOwner(Player p) {
+        do Sys.wait(25);
         let owner = p;
         return;
     }

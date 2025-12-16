@@ -120,9 +120,10 @@ class Player {
     }
 
     method void move(int steps, int boardSize) {
+        do Sys.wait(50);
         do Player.drawClearPlayer(id, xCoordinate[location], yCoordinate[location]);
+        do Sys.wait(50);
         let location = (location + steps);
-        
         if (~(location < boardSize)) {
             let location = (location - boardSize);
             do Output.moveCursor(7, 9);
@@ -131,12 +132,16 @@ class Player {
             do Output.printString("Gained $200.");
             do receive(200); // Collect $200 for passing GO
         }
-        
+
         if (location < 0) {
             let location = location + boardSize;
         }
 
+        do Sys.wait(50);
+
         do Player.drawPlayer(id, xCoordinate[location], yCoordinate[location]);
+
+        do Sys.wait(500);
 
         return;
     }
@@ -173,22 +178,39 @@ class Player {
 
     // 買土地 (Buy Regular Property)
     method void buyProperty(PropertyTile p, int price, Board board) {
+        do Sys.wait(50);
         if (canAfford(price)) {
+            do Sys.wait(50);
             do pay(price, board);
             do p.setOwner(this);
+            do Output.moveCursor(9, 8);
+            do Output.printString("Buy Success!");
+            do Sys.wait(500);
+        }
+        else{
+            do Output.moveCursor(9, 8);
+            do Output.printString("Not enough money!");
+            do Sys.wait(500);
         }
         return;
     }
     
     // 買設施 (Buy Infrastructure/Utility)
     method void buyInfrastructure(InfrastructureTile i, int price, Board board) {
+        do Sys.wait(50);
         if (canAfford(price)) {
+            do Sys.wait(50);
             do pay(price, board);
             do i.setOwner(this);
             let infras = infras + 1;
+            do Output.moveCursor(9, 8);
+            do Output.printString("Buy Success!");
+            do Sys.wait(500);
         }
         else{
-            do Output.printString("12");
+            do Output.moveCursor(9, 8);
+            do Output.printString("Not enough money!");
+            do Sys.wait(500);
         }
         return;
     }
@@ -223,13 +245,6 @@ class Player {
     // Track turns spent in jail
     method void incrementJailTurns() {
         let jailTurns = jailTurns + 1;
-        do Output.printString("You have served ");
-        do Output.printInt(jailTurns);
-        do Output.printString(" in jail");
-
-        if(jailTurns = 3){
-            leaveJail();
-        }
         return;
     }
     

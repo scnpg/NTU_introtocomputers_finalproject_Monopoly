@@ -710,7 +710,7 @@ class Game{
                 let tmp = tmp+1;
             }
 
-            do Sys.wait(5000);
+            do Sys.wait(500);
 
             let nowIndex = nowIndex+1;
             if (nowIndex = 4){
@@ -720,134 +720,6 @@ class Game{
             //     end=ture;
             // }
         }
-        return;
-    }
-    
-    method void drawMoney(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+2, y+1, x+4, y+1);
-        do Screen.drawRectangle(x+1, y+3, x+4, y+3);
-        do Screen.drawRectangle(x+1, y+5, x+4, y+5);
-        do Screen.drawRectangle(x+2, y+1, x+2, y+5);
-        
-        return;
-    }
-	
-    method void draw0(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
-
-        do Screen.setColor(0);
-        do Screen.drawRectangle(x+2, y+2, x+2, y+4);
-
-        do Screen.setColor(1);
-        
-        return;
-    }
-	
-    method void draw1(){
-        do Screen.setColor(1);
-        do Screen.drawPixel(x+1, y+1);
-        do Screen.drawRectangle(x+2, y+1, x+2, y+4);
-        do Screen.drawRectangle(x+1, y+5, x+3, y+5);
-
-        return;
-    }
-
-    method void draw2(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
-
-        do Screen.setColor(0);
-        do Screen.drawRectangle(x+1, y+2, x+2, y+2);
-        do Screen.drawRectangle(x+2, y+4, x+3, y+4);
-
-        do Screen.setColor(1);
-
-        return;
-    }
-
-    method void draw3(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
-
-        do Screen.setColor(0);
-        do Screen.drawRectangle(x+1, y+2, x+2, y+2);
-        do Screen.drawRectangle(x+1, y+4, x+2, y+4);
-
-        do Screen.setColor(1);
-
-        return;
-    }
-
-    method void draw4(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+1, y+3);
-        do Screen.drawPixel(x+2, y+3);
-        do Screen.drawRectangle(x+3, y+1, x+3, y+5);
-
-        return;
-    }
-
-    method void draw5(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
-
-        do Screen.setColor(0);
-        do Screen.drawRectangle(x+2, y+2, x+3, y+2);
-        do Screen.drawRectangle(x+1, y+4, x+2, y+4);
-
-        do Screen.setColor(1);
-
-        return;
-    }
-
-    method void draw6(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
-
-        do Screen.setColor(0);
-        do Screen.drawRectangle(x+2, y+2, x+3, y+2);
-        do Screen.drawPixel(x+2, y+4);
-
-        do Screen.setColor(1);
-
-        return;
-    }
-
-    method void draw7(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+3, y+1);
-        do Screen.drawRectangle(x+3, y+2, x+3, y+5);
-
-        do Screen.setColor(1);
-
-        return;
-    }
-
-    method void draw8(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
-        
-        do Screen.setColor(0);
-        do Screen.drawPixel(x+2, y+2);
-        do Screen.drawPixel(x+2, y+4);
-
-        do Screen.setColor(1);
-
-        return;
-    }
-
-    method void draw9(){
-        do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+3, y+5);
-        
-        do Screen.setColor(0);
-        do Screen.drawPixel(x+2, y+2);
-        do Screen.drawRectangle(x+1, y+4, x+2, y+4);
-
-        do Screen.setColor(1);
-        
         return;
     }
 }
