@@ -4,38 +4,53 @@ class ChanceTile {
     constructor ChanceTile new() {
         return this;
     }
+    method void printf(String msg, int row) {
+        do Output.moveCursor(7+row, 7);
+        do Output.printString(msg);
+        do msg.dispose();
+        return;
+    }
 
     method void activate(Player p, Board board) {
         var int c;
         var int houses;
         
         let c = 0;
-        
+        do printf("press any key",0);
+        do printf("to draw a card...",1);
         // Random number generation using timing (until a key is pressed)
         while (~(Keyboard.keyPressed())) {
             let c = c + 1;
         }
         
         // Modulo 16 operation (to select one of 16 cards)
-        let c = c - (16 * (c / 16));
+        let c = c - (15 * (c / 15));
         
         // All subsequent calls require the Board object for bankruptcy checks,
         // so we must pass the board object in pay and buy methods.
+         do Screen.setColor(false);
+        do Screen.drawRectangle(50, 70, 400, 160);
+        do Screen.setColor(true);
         
         if (c = 0) {
             // move to boardwalk (39)
+            do printf("Advance to Management",0);
+
             do p.moveTo(39);
             do board.handleLanding(p);
         }
         else {
             if (c = 1) {
                 // pass go (0)
+                do printf("Advance to Go",0);
                 do p.moveTo(0);
                 do board.handleLanding(p);
             }
             else {
                 if (c = 2) {
                     // move to illinois (24)
+                    do printf("Advance to The Ruins",0);
+
                     if ((p.getLocation() > 24) | (p.getLocation() = 24)) {
                         do p.receive(200);
                     }
@@ -45,6 +60,8 @@ class ChanceTile {
                 else {
                     if (c = 3) {
                         // move to st charles (11)
+                        do printf("Advance to New Gym",0);
+
                         if ((p.getLocation() > 11) | (p.getLocation() = 11)) {
                             do p.receive(200);
                         }
@@ -53,6 +70,9 @@ class ChanceTile {
                     }
                     else {
                         if (c = 4) {
+                            do printf("Advance to",0);
+                            do printf("Next Railroad",1);
+
                             // move to next railroad (5, 15, 25, 35)
                             while (~((p.getLocation() = 5) | (p.getLocation() = 15) | (p.getLocation() = 25) | (p.getLocation() = 35))) {
                                 do p.move(1, 40);
@@ -61,14 +81,17 @@ class ChanceTile {
                         }
                         else {
                             if (c = 5) {
-                                // move to nearest railroad (5, 15, 25, 35)
-                                while (~((p.getLocation() = 5) | (p.getLocation() = 15) | (p.getLocation() = 25) | (p.getLocation() = 35))) {
-                                    do p.move(1, 40);
-                                }
-                                do board.handleLanding(p);
+                                do printf("After much hard",0);
+                                do printf("work, you received",1);
+                                do printf("a scholarship of $150",2);
+                                // Receive $150
+                                do p.receive(150);
                             }
                             else {
                                 if (c = 6) {
+                                    do printf("Advance to",0);
+                                    do printf("Next Utility",1);
+
                                     // move to utility (12, 28)
                                     while (~((p.getLocation() = 12) | (p.getLocation() = 28))) {
                                         do p.move(1, 40);
@@ -77,27 +100,53 @@ class ChanceTile {
                                 }
                                 else {
                                     if (c = 7) {
+                                        do printf("You have won a",0);
+                                        do printf("school giveaway.",1);
+                                        do printf("Collect $50",2);
+
                                         // Bank pays $50
                                         do p.receive(50);
                                     }
                                     else {
                                         if (c = 8) {
+                                            do printf("Your Prof.",0);
+                                            do printf("signed your",1);
+                                            do printf("withdrawal form.",2);
+                                            do printf("Get Out of",3);
+                                            do printf("Jail +1.",4);
+
                                             // Get Out of Jail Free
                                             do p.addGetOutOfJailCard();
                                         }
                                         else {
                                             if (c = 9) {
+                                                do printf("You wonder what",0);
+                                                do printf("the sticky mass",1);
+                                                do printf("you stepped on was.",2);
+                                                do printf("Move back three",3);
+                                                do printf("spaces to check.",4);
+
                                                 // Go back 3 spaces
                                                 do p.move(-3, 40);
                                                 do board.handleLanding(p);
                                             }
                                             else {
                                                 if (c = 10) {
+                                                    do printf("You were caught",0);
+                                                    do printf("leaking past exams",1);
+                                                    do printf("and sent to jail.",2);
                                                     // Go To Jail
                                                     do board.sendToJail(p);
                                                 }
                                                 else {
                                                     if (c = 11) {
+                                                        do printf("Your properties",0);
+                                                        do printf("were reported by",1);
+                                                        do printf("entitled students.",2);
+                                                        do printf("Pay $25 for each",3);
+                                                        do printf("level upgraded per",4);
+                                                        do printf("property.",5);
+
                                                         // Pay for houses/hotels ($25 per house)
                                                         // NOTE: Assumes p.getNumHouses() and p.pay(amount, board) are available
                                                         let houses = p.getNumHouses();
@@ -105,25 +154,33 @@ class ChanceTile {
                                                     }
                                                     else {
                                                         if (c = 12) {
+                                                            do printf("You were going",0);
+                                                            do printf("crazy on your bike",1);
+                                                            do printf("and received a",2);
+                                                            do printf("speeding fine",3);
+                                                            do printf("of $15",4);
+
                                                             // Pay $15
                                                             do p.pay(15, board);
                                                         }
                                                         else {
                                                             if (c = 13) {
+                                                                do printf("Take a trip to",0);
+                                                                do printf("Gongguan Station",1);
+
                                                                 // Move to Reading Railroad (25)
                                                                 do p.moveTo(25);
                                                                 do board.handleLanding(p);
                                                             }
                                                             else {
                                                                 if (c = 14) {
-                                                                    
-                                                                    do board.receiveFromOther(p, -10);
-                                                                }
-                                                                else {
-                                                                    if (c = 15) {
-                                                                        // Receive $150
-                                                                        do p.receive(150);
-                                                                    }
+                                                                    do printf("You have told your",0);
+                                                                    do printf("friends to cover",1);
+                                                                    do printf("your meal too",2);
+                                                                    do printf("many times. Pay",3);
+                                                                    do printf("each player $50",4);
+
+                                                                    do board.receiveFromOther(p, -50);
                                                                 }
                                                             }
                                                         }
