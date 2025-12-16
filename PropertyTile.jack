@@ -88,4 +88,8 @@ class PropertyTile {
         let owner = p;
         return;
     }
+    method void setNumHouse(int n) {
+        let houses=n;
+        return;
+    }
 }
