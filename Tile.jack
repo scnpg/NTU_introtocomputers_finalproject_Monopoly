@@ -141,7 +141,7 @@ class Tile {
     method int getType() {
         return type;
     }
-    method void resetOwnerIfMatches(Player p) {\
+    method void resetOwnerIfMatches(Player p) {
         if (type = 1) {
             if (propertyTile.getOwner() = p) {
                 do propertyTile.setOwner(null);  
