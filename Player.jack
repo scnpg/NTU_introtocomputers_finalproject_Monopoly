@@ -121,16 +121,21 @@ class Player {
 
     method void move(int steps, int boardSize) {
         do Player.drawClearPlayer(id, xCoordinate[location], yCoordinate[location]);
-        let location = location + steps;
+        let location = (location + steps);
         
-        while (~(location < boardSize)) {
-            let location = location - boardSize;
+        if (~(location < boardSize)) {
+            let location = (location - boardSize);
             do Output.moveCursor(7, 9);
             do Output.printString("Passed GO!");
             do Output.moveCursor(8, 9);
             do Output.printString("Gained $200.");
             do receive(200); // Collect $200 for passing GO
         }
+        
+        if (location < 0) {
+            let location = location + boardSize;
+        }
+
         do Player.drawPlayer(id, xCoordinate[location], yCoordinate[location]);
 
         return;

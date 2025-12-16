@@ -1,4 +1,6 @@
 class JailTile {
+
+    field int oiiai;
     
     constructor JailTile new() {
         return this;

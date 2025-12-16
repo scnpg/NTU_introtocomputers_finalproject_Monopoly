@@ -1,5 +1,7 @@
 class ParkingTile {
 
+    field int oiiai;
+
     constructor ParkingTile new() {
         return this;
     }

@@ -7,8 +7,9 @@ class Board{
 
 
     constructor Board new() {
+        let players=Array.new(4);
         let size=40;
-        let tiles=Array.new(size);
+        let tiles=Array.new(40);
         let jailPos=10;
         do initMap();
 
@@ -27,8 +28,7 @@ class Board{
         let tiles[7]=Tile.newProperty(100,6,60);
         let tiles[8]=Tile.newChance();
         let tiles[9]=Tile.newProperty(120,8,60);
-        //let tiles[10]=Tile.newJail();
-        let tiles[10]=Tile.newProperty(120,8,60);
+        let tiles[10]=Tile.newJail();
         let tiles[11]=Tile.newProperty(140,10,80);
         let tiles[12]=Tile.newProperty(140,10,80);
         let tiles[13]=Tile.newInfrastructure(150);
@@ -69,7 +69,7 @@ class Board{
 
         let t=tiles[loc];
 
-        do t.activate(p,this);
+        do t.activate(p, this);
         do Sys.wait(1000);
         return;
     }

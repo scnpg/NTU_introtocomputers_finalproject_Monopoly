@@ -1,4 +1,5 @@
 class ChanceTile {
+    field int oiiai;
 
     constructor ChanceTile new() {
         return this;

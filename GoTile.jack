@@ -1,4 +1,6 @@
 class GoTile {
+    field int oiiai;
+
     constructor GoTile new() {
         return this;
     }

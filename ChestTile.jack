@@ -1,4 +1,5 @@
 class ChestTile {
+    field int oiiai;
 
     constructor ChestTile new() {
         return this;
