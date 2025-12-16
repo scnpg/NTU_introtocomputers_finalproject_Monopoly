@@ -16,6 +16,7 @@ class Board{
     } 
 
     method void initMap() {
+        do Tile.init();
         let tiles[0]=Tile.newGo();
         let tiles[1]=Tile.newProperty(50,2,40);
         let tiles[2]=Tile.newProperty(50,3,40);
