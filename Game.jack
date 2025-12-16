@@ -2,7 +2,16 @@ class Game{
 
     field Array players;
 	field Board board;
-    static String print;
+    static String prtplayer;
+    static String prtmoney;
+    static String prtoutjail;
+    static String prtroll1;
+    static String prtroll2;
+    static String prtroll3;
+    static String prtwait;
+    static String prtget;
+    static String prtpips;
+    static String prtturn;
 
     constructor Game new() {
         do Player.init();
@@ -12,8 +21,19 @@ class Game{
         let players[2] = Player.new();
         let players[3] = Player.new();
 
-		let board = Board.new();  
+		let board = Board.new();
         do board.setPlayer(players, 4);
+
+        let prtplayer = "Player ";
+        let prtmoney = "   balance: $";
+        let prtoutjail = "OutJailCards: ";
+        let prtroll1 = "Press any";
+        let prtroll2 = "key to stop";
+        let prtroll3 = "the dice";
+        let prtwait = "Wait";
+        let prtget = "Get ";
+        let prtpips = " pips";
+        let prtturn = "'s turn";
 
         return this;
     }
@@ -518,15 +538,12 @@ class Game{
             let id = player.getID();
             let balance = player.getBalance();
             do Output.moveCursor(1+(4*index), 35);
-            let print = "Player ";
-            do Output.printString(print);
+            do Output.printString(prtplayer);
             do Output.printInt(id+1);
-            let print = "   balance: $";
-            do Output.printString(print);
+            do Output.printString(prtmoney);
             do Output.printInt(balance);
-            do Output.moveCursor(1+(4*index)+1, 35);
-            let print = "OutJailCards: ";
-            do Output.printString(print);
+            do Output.moveCursor(1+(4*index)+1, 35);+
+            do Output.printString(prtoutjail);
             do Output.printInt(player.getGetOutJails());
             let index = index + 1;
         }
@@ -612,14 +629,11 @@ class Game{
         var int n;
         var int pips;
         do Output.moveCursor(19, 35);
-        let print = "Press any";
-        do Output.printString(print);
+        do Output.printString(prtroll1);
         do Output.moveCursor(20, 35);
-        let print = "key to stop";
-        do Output.printString(print);
+        do Output.printString(prtroll2);
         do Output.moveCursor(21, 35);
-        let print = "the dice";
-        do Output.printString(print);
+        do Output.printString(prtroll3);
         let n=0;
         while (~(Keyboard.keyPressed())) {
             let n=n+1;
@@ -632,20 +646,16 @@ class Game{
         do Screen.setColor(0);
         do Screen.drawRectangle(280, 205, 370, 250);
         do Output.moveCursor(20, 35);
-        let print = "Wait";
-        do Output.printString(print);
+        do Output.printString(prtwait);
         do Sys.wait(500);
         do Screen.setColor(0);
         do Screen.drawRectangle(280, 205, 370, 250);
         do Output.moveCursor(19, 35);
-        let print = "Press any";
-        do Output.printString(print);
+        do Output.printString(prtroll1);
         do Output.moveCursor(20, 35);
-        let print = "key to stop";
-        do Output.printString(print);
+        do Output.printString(prtroll2);
         do Output.moveCursor(21, 35);
-        let print = "the dice";
-        do Output.printString(print);
+        do Output.printString(prtroll3);
         while (~(Keyboard.keyPressed())) {
             let n=n+1;
             if (n > 6) {
@@ -657,11 +667,9 @@ class Game{
         do Screen.setColor(0);
         do Screen.drawRectangle(280, 205, 370, 250);
         do Output.moveCursor(20, 35);
-        let print = "Get ";
-        do Output.printString(print);
+        do Output.printString(prtget);
         do Output.printInt(pips);
-        let print = " pips!";
-        do Output.printString(print);
+        do Output.printString(prtpips);
         return (pips);
     }
 
@@ -696,11 +704,9 @@ class Game{
             let currentPlayer = players[nowIndex];
 
             do Output.moveCursor(5, 8);
-            let print = "Player ";
-            do Output.printString(print);
+            do Output.printString(prtplayer);
             do Output.printInt(nowIndex+1);
-            let print = "'s turn!";
-            do Output.printString(print);
+            do Output.printString(prtturn);
 
             let pips = Game.rollDice();
 

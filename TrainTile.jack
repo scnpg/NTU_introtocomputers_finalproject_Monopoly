@@ -2,6 +2,7 @@ class TrainTile {
 
     field int basePrice; 
     field Player owner;
+    static String print;
 
     constructor TrainTile new(int price) {
         let basePrice = price;
@@ -48,13 +49,17 @@ class TrainTile {
         
         if (owner = null) {
             do Output.moveCursor(7, 7);
-            do Output.printString("This is a unclaimed");
+            let print = "This is a unclaimed";
+            do Output.printString(print);
             do Output.moveCursor(8, 8);
-            do Output.printString("railway land");
+            let print = "railway land";
+            do Output.printString(print);
             do Output.moveCursor(10, 8);
-            do Output.printString("Press Y to buy it");
+            let print = "Press Y to buy it";
+            do Output.printString(print);
             do Output.moveCursor(11, 7);
-            do Output.printString("Press N to skip it");
+            let print = "Press N to skip it";
+            do Output.printString(print);
             while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
                 let buy = Keyboard.keyPressed();
             }

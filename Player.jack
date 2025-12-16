@@ -13,6 +13,10 @@ class Player {
     field int numHouses;
     field Array xCoordinate;
     field Array yCoordinate;
+    static String prtmv1;
+    static String prtmv2;
+    static String prtbuy;
+    static String prtnomney;
 
     constructor Player new() {
         //coordinate
@@ -115,6 +119,10 @@ class Player {
     }
 
     function void init() {
+        let prtmv1 = "Passed GO!";
+        let prtmv2 = "Gained $200.";
+        let prtbuy = "Buy Success!";
+        let prtnomney = "Not enough money!";
         let idCounter = 0;
         return;
     }
@@ -127,9 +135,9 @@ class Player {
         if (~(location < boardSize)) {
             let location = (location - boardSize);
             do Output.moveCursor(7, 9);
-            do Output.printString("Passed GO!");
+            do Output.printString(prtmv1);
             do Output.moveCursor(8, 9);
-            do Output.printString("Gained $200.");
+            do Output.printString(prtmv2);
             do receive(200); // Collect $200 for passing GO
         }
 
@@ -183,13 +191,13 @@ class Player {
             do Sys.wait(50);
             do pay(price, board);
             do p.setOwner(this);
-            do Output.moveCursor(9, 8);
-            do Output.printString("Buy Success!");
+            do Output.moveCursor(13, 9);
+            do Output.printString(prtbuy);
             do Sys.wait(500);
         }
         else{
-            do Output.moveCursor(9, 8);
-            do Output.printString("Not enough money!");
+            do Output.moveCursor(13, 8);
+            do Output.printString(prtnomney);
             do Sys.wait(500);
         }
         return;
@@ -204,12 +212,12 @@ class Player {
             do i.setOwner(this);
             let infras = infras + 1;
             do Output.moveCursor(9, 8);
-            do Output.printString("Buy Success!");
+            do Output.printString(prtbuy);
             do Sys.wait(500);
         }
         else{
             do Output.moveCursor(9, 8);
-            do Output.printString("Not enough money!");
+            do Output.printString(prtnomney);
             do Sys.wait(500);
         }
         return;
@@ -273,13 +281,19 @@ class Player {
 
         // Must afford house
         if (~canAfford(p.getHouseCost())) {
-                return;
+            do Output.moveCursor(14, 8);
+            do Output.printString(prtnomney);
+            do Sys.wait(500);
+            return;
         }
 
          // Pay and build
         do pay(p.getHouseCost(), board);
-        do p.addHouse();   
+        do p.addHouse();
         let numHouses=numHouses+1;
+        do Output.moveCursor(14, 9);
+        do Output.printString(prtbuy);
+        do Sys.wait(500);
         return;
     }
 

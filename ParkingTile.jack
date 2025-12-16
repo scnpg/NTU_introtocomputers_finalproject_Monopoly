@@ -1,12 +1,20 @@
 class ParkingTile {
 
     field int oiiai;
+    static String prt1;
+    static String prt2;
 
     constructor ParkingTile new() {
+        let prt1 = "This is a parking tile.";
+        let prt2 = "Nothing happens.";
         return this;
     }
 
     method void activate(Player p) {
+        do Output.moveCursor(7, 7);
+        do Output.printString(prt1);
+        do Output.moveCursor(8, 9);
+        do Output.printString(prt2);
         return;
     }
 }

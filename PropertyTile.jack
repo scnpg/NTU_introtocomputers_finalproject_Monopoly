@@ -5,6 +5,7 @@ class PropertyTile {
     field int houses;        
     field int houseCost;
     field Player owner;
+    static String print;
 
     constructor PropertyTile new(int p, int r, int h) {
         let price = p;
@@ -12,23 +13,43 @@ class PropertyTile {
         let houseCost = h;
         let houses = 0;
         let owner = null;
+        let prtnull1 = "This is an unclaimed";
+        let prtnull2 = "infrastructure land";
+        let prtnull3 = "its price is $";
+        let prtnull4 = "Press Y to buy it";
+        let prtnull5 = "Press N to skip it";
+        let prtown1 = "This infrastructure";
+        let prtown2 = "is owned by yourself";
+        let prtown31 = "You have ";
+        let prtown32 = " houses here";
+        let prtown4 = "a new house costs $"
+        let prtown5 = "Press Y to build one";
+        let prtown6 = "Press N to skip it";
+        let prtown7 = "You cannot build more";
+        let prtother1 = "This infrastructure";
+        let prtother2 = "is owned by player ";
+        let prtother3 = "You need to pay $";
         return this;
     }
 
     method void activate(Player p, Board board) {
+        var int rentDue;
         var int buy;
         let buy = 0;
+        do Sys.wait(50);
 
         // No owner, attempt to buy
         if (owner = null) {
             do Output.moveCursor(7, 7);
-            do Output.printString("This is a unclaimed");
+            do Output.printString(prtnull1);
             do Output.moveCursor(8, 7);
-            do Output.printString("property land");
-            do Output.moveCursor(10, 8);
-            do Output.printString("Press Y to buy it");
+            do Output.printString(prtnull2);
+            do Output.moveCursor(9, 8);
+            do Output.printString(prtnull3);
+            do Output.moveCursor(10, 7);
+            do Output.printString(prtnull4);
             do Output.moveCursor(11, 7);
-            do Output.printString("Press N to skip it");
+            do Output.printString(prtnull5);
             do Sys.wait(25);
             while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
                 let buy = Keyboard.keyPressed();
@@ -43,13 +64,54 @@ class PropertyTile {
 
         // Owned by someone else, pay rent
         if (~(owner = p)) {
+            let rentDue = getRent();
+            do Output.moveCursor(7, 7);
+            do Output.printString(prtother1);
+            do Output.moveCursor(8, 7);
+            do Output.printString(prtother2);
+            do Output.printInt(owner.getId());
+            do Output.moveCursor(9, 7);
+            do Output.printString(prtother3);
+            do Output.printInt(rentDue);
             do Sys.wait(25);
-            do p.pay(getRent(), board);
-            do owner.receive(getRent());
+            do p.pay(rentDue, board);
+            do owner.receive(rentDue);
             return;
         }
 
         // Owned by self, nothing happens
+        if (owner = p) {
+            do Output.moveCursor(7, 7);
+            do Output.printString(prtown1);
+            do Output.moveCursor(8, 7);
+            do Output.printString(prtown2);
+            do Output.moveCursor(9, 7);
+            do Output.printString(prtown31);
+            do Output.printInt(houses);
+            do Output.printString(prtown32);
+            do Sys.wait(25);
+            if( houses < 5 ){
+                do Output.moveCursor(10, 7);
+                do Output.printString(prtown4);
+                do Output.printInt(houseCost);
+                do Output.moveCursor(11, 7);
+                do Output.printString(prtown5);
+                do Output.moveCursor(12, 7);
+                do Output.printString(prtown6);
+                let buy = 0;
+                while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
+                    let buy = Keyboard.keyPressed();
+                }
+                do Sys.wait(25);
+                if (buy = 89 | buy = 121){
+                    do p.buildHouse(this, houseCost, board);
+                }
+            }
+            else {
+                do Output.moveCursor(10, 7);
+                do Output.printString(prtown7);
+            }
+        }
         return;
     }
 

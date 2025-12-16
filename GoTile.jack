@@ -1,15 +1,18 @@
 class GoTile {
-    field int oiiai;
+    field String print1;
+    field String print2
 
     constructor GoTile new() {
+        let print1 = "Go tile!!";
+        let print2 = "earned $200!";
         return this;
     }
 
     method void activate(Player p) {
         do Output.moveCursor(7, 11);
-        do Output.printString("Go tile!!");
+        do Output.printString(print1);
         do Output.moveCursor(8, 10);
-        do Output.printString("earned $200!");
+        do Output.printString(print2);
         do p.receive(200);
         return;
     }
