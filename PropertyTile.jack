@@ -24,7 +24,7 @@ class PropertyTile {
             do Output.moveCursor(7, 7);
             do Output.printString("This is a unclaimed");
             do Output.moveCursor(8, 7);
-            do Output.printString("proper land");
+            do Output.printString("property land");
             do Output.moveCursor(10, 8);
             do Output.printString("Press Y to buy it");
             do Output.moveCursor(11, 7);
@@ -86,10 +86,6 @@ class PropertyTile {
 
     method void setOwner(Player p) {
         let owner = p;
-        return;
-    }
-    method void setNumHouses(int n) {
-        let houses=n;
         return;
     }
 }

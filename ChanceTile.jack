@@ -93,7 +93,7 @@ class ChanceTile {
                                             else {
                                                 if (c = 10) {
                                                     // Go To Jail
-                                                    do p.goToJail();
+                                                    do board.sendToJail(p);
                                                 }
                                                 else {
                                                     if (c = 11) {

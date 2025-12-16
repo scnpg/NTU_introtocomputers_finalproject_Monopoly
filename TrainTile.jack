@@ -49,8 +49,8 @@ class TrainTile {
         if (owner = null) {
             do Output.moveCursor(7, 7);
             do Output.printString("This is a unclaimed");
-            do Output.moveCursor(8, 7);
-            do Output.printString("r land");
+            do Output.moveCursor(8, 8);
+            do Output.printString("railway land");
             do Output.moveCursor(10, 8);
             do Output.printString("Press Y to buy it");
             do Output.moveCursor(11, 7);

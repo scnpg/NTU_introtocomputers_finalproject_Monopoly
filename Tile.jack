@@ -141,28 +141,6 @@ class Tile {
     method int getType() {
         return type;
     }
-    method void resetOwnerIfMatches(Player p) {
-        if (type = 1) {
-            if (propertyTile.getOwner() = p) {
-                do propertyTile.setOwner(null);  
-                do propertyTile.setNumHouses(0); 
-            }
-        }
-
-        if (type = 3) {
-            if (trainTile.getOwner() = p) {
-                do trainTile.setOwner(null);
-            }
-        }
-
-        if (type = 4) {
-            if (infraTile.getOwner() = p) {
-                do infraTile.setOwner(null);
-            }
-        }
-
-        return;
-    }
 }
 
 

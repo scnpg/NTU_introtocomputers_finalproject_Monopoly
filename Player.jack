@@ -123,8 +123,12 @@ class Player {
         do Player.drawClearPlayer(id, xCoordinate[location], yCoordinate[location]);
         let location = location + steps;
         
-        if (~(location < boardSize)) {
-            let location = location - (boardSize * (location / boardSize));
+        while (~(location < boardSize)) {
+            let location = location - boardSize;
+            do Output.moveCursor(7, 9);
+            do Output.printString("Passed GO!");
+            do Output.moveCursor(8, 9);
+            do Output.printString("Gained $200.");
             do receive(200); // Collect $200 for passing GO
         }
         do Player.drawPlayer(id, xCoordinate[location], yCoordinate[location]);
