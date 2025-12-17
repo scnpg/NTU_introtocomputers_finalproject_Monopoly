@@ -114,25 +114,77 @@ class Game{
         do Game.drawB(44, 222);
         do Game.drawY(50, 222);
 
-        do Game.drawProperties(3, 43, 35);
-        do Game.drawProperties(3, 81, 35);
-        do Game.drawProperties(3, 100, 35);
+        do Game.drawProperties(3, 43, 35);//11
+        do Game.drawN(22, 196);
+        do Game.drawG(28, 196);
 
-        do Game.drawProperties(4, 138, 35);
-        do Game.drawProperties(4, 176, 35);
-        do Game.drawProperties(4, 195, 35);
+        do Game.drawProperties(3, 81, 35);//12
+        do Game.drawP(22, 177);
+        do Game.drawH(28, 177);
 
-        do Game.drawProperties(5, 35, 43);
-        do Game.drawProperties(5, 35, 81);
-        do Game.drawProperties(5, 35, 100);
+        do Game.drawProperties(3, 100, 35);//14
+        do Game.drawD(22, 139);
+        do Game.drawM(28, 139);
 
-        do Game.drawProperties(6, 35, 138);
-        do Game.drawProperties(6, 35, 176);
-        do Game.drawProperties(6, 35, 195);
+        do Game.drawProperties(4, 138, 35);//16
+        do Game.drawM(22, 101);
+        do Game.drawA(28, 101);
 
-        do Game.drawProperties(7, 214, 43);
-        do Game.drawProperties(7, 214, 81);
-        do Game.drawProperties(7, 214, 100);
+        do Game.drawProperties(4, 176, 35);//17
+        do Game.drawX(22, 82);
+        do Game.drawB(28, 82);
+
+        do Game.drawProperties(4, 195, 35);//19
+        do Game.drawBig9(22, 44);
+        do Game.drawG(28, 44);
+
+        do Game.drawProperties(5, 35, 43);//21
+        do Game.drawS(44, 22);
+        do Game.drawS(50, 22);
+
+        do Game.drawProperties(5, 35, 81);//23
+        do Game.drawL(82, 22);
+        do Game.drawA(88, 22);
+
+        do Game.drawProperties(5, 35, 100);//24
+        do Game.drawR(101, 22);
+        do Game.drawU(107, 22);
+
+        do Game.drawProperties(6, 35, 138);//26
+        do Game.drawX(139, 22);
+        do Game.drawX(145, 22);
+
+        do Game.drawProperties(6, 35, 176);//28
+        do Game.drawC(177, 22);
+        do Game.drawF(183, 22);
+
+        do Game.drawProperties(6, 35, 195);//29
+        do Game.drawM(196, 22);
+        do Game.drawL(202, 22);
+
+        do Game.drawProperties(7, 214, 43);//31
+        do Game.drawF(223, 44);
+        do Game.drawM(229, 44);
+
+        do Game.drawProperties(7, 214, 81);//33
+        do Game.drawA(223, 82);
+        do Game.drawG(229, 82);
+
+        do Game.drawProperties(7, 214, 100);//34
+        do Game.drawL(223, 101);
+        do Game.drawS(229, 101);
+
+        //36
+        do Game.drawG(223, 139);
+        do Game.drawT(229, 139);
+
+        //37
+        do Game.drawX(223, 158);
+        do Game.drawS(229, 158);
+
+        //39
+        do Game.drawC(223, 196);
+        do Game.drawM(229, 196);
         
         do Screen.setColor(1);
         do Game.drawGo(219, 216);
