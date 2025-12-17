@@ -1048,13 +1048,11 @@ class Game{
 
     function void drawM(int x, int y){ //wide
         do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+5, y+5);
-
-        do Screen.setColor(0);
-        do Screen.drawRectangle(x+2, y+2, x+2, y+5);
-        do Screen.drawRectangle(x+4, y+2, x+4, y+5);
-
-        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+1, y+5);
+        do Screen.drawRectangle(x+5, y+1, x+5, y+5);
+        do Screen.drawRectangle(x+3, y+3, x+3, y+5);
+        do Screen.drawPixel(x+2, y+2);
+        do Screen.drawPixel(x+4, y+2);
         
         return;
     }
