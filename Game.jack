@@ -80,10 +80,14 @@ class Game{
 
         do Screen.setColor(0);
         do Screen.drawRectangle(44, 44, 212, 212); //inner-square
-        do Screen.drawRectangle(120, 35, 137, 35); //up-line
-        do Screen.drawRectangle(35, 120, 35, 137); //left-line
-        do Screen.drawRectangle(221, 120, 221, 137); //right-line
-        do Screen.drawRectangle(120, 221, 137, 221); //down-line
+        do Screen.drawRectangle(120, 35, 137, 35); //up-line(metro)
+        do Screen.drawRectangle(35, 120, 35, 137); //left-line(metro)
+        do Screen.drawRectangle(221, 120, 221, 137); //right-line(metro)
+        do Screen.drawRectangle(120, 221, 137, 221); //down-line(metro)
+        do Screen.drawRectangle(158, 221, 175, 221); //down-line(chest)
+        do Screen.drawRectangle(221, 63, 221, 80); //right-line(chest)
+        do Screen.drawRectangle(63, 221, 80, 221); //down-line(chance)
+        do Screen.drawRectangle(63, 35, 80, 35); //up-line(chance)
 
         do Screen.setColor(1); //properties
         do Game.drawProperties(1, 138, 214); //1
@@ -357,9 +361,6 @@ class Game{
     }
 
     function void drawChance(int x, int y){
-        do Screen.setColor(0);
-        do Screen.drawRectangle(x+1, y, x+18, y);
-
         do Screen.setColor(1);
         do Screen.drawRectangle(x+7, y+1, x+12, y+1);
         do Screen.drawRectangle(x+6, y+2, x+7, y+4);
@@ -372,9 +373,6 @@ class Game{
     }
 
     function void drawChance2(int x, int y){
-        do Screen.setColor(0);
-        do Screen.drawRectangle(x + 1, y, x + 18, y);
-
         do Screen.setColor(1);
         do Screen.drawRectangle(x + 7, y - 1, x + 12, y - 1);
         do Screen.drawRectangle(x + 6, y - 5, x + 7, y - 2);
@@ -895,7 +893,7 @@ class Game{
         
         do Screen.setColor(0);
         do Screen.drawRectangle(x+2, y+2, x+3, y+3);
-        do Screen.drawRectangle(x+2, y+4, x+3, y+4);
+        do Screen.drawRectangle(x+2, y+5, x+3, y+5);
 
         do Screen.setColor(1);
         
@@ -1097,7 +1095,17 @@ class Game{
 
     function void drawX(int x, int y){ //wide
         do Screen.setColor(1);
- 
+        do Screen.drawRectangle(x+1, y+1, x+1, y+5);
+        do Screen.drawRectangle(x+4, y+1, x+4, y+5);
+        do Screen.drawRectangle(x+2, y+3, x+3, y+3);
+
+        do Screen.setColor(0);
+        do Screen.drawPixel(x+1, y+3);
+        do Screen.drawPixel(x+4, y+3);
+        
+        do Screen.setColor(1);
+
+        return;
         
         return;
     }
