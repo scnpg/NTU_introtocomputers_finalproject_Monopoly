@@ -9,7 +9,7 @@ class Main{
         // 移動游標到螢幕中間
         do Output.moveCursor(heigh, col);
         do Output.printString(text);
-        
+        do text.dispose();
         return;
     }
 

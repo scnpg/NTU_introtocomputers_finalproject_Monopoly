@@ -85,9 +85,8 @@ class Tile {
         return this;
     }
 
-    constructor Tile newGoToJail(JailTile jail) {
+    constructor Tile newGoToJail() {
         let type = GOTO_JAIL;
-        let jailTile = jail;
         return this;
     }
 

@@ -48,7 +48,7 @@ class Board{
         let tiles[27]=Tile.newInfrastructure(150);
         let tiles[28]=Tile.newProperty(260,22,150);
         let tiles[29]=Tile.newProperty(280,24,150);
-        let tiles[30]=Tile.newGoToJail(tiles[10]);
+        let tiles[30]=Tile.newGoToJail();
         let tiles[31]=Tile.newProperty(300,26,180);
         let tiles[32]=Tile.newChest();
         let tiles[33]=Tile.newProperty(300,26,180);

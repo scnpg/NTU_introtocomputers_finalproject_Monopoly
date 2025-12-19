@@ -2,6 +2,16 @@ class Game{
 
     field Array players;
 	field Board board;
+    static String prtplayer;
+    static String prtmoney;
+    static String prtoutjail;
+    static String prtroll1;
+    static String prtroll2;
+    static String prtroll3;
+    static String prtwait;
+    static String prtget;
+    static String prtpips;
+    static String prtturn;
 
     constructor Game new() {
         do Player.init();
@@ -14,18 +24,22 @@ class Game{
 		let board = Board.new();
         do board.setPlayer(players, 4);
 
+        let prtplayer = "Player ";
+        let prtmoney = "   balance: $";
+        let prtoutjail = "OutJailCards: ";
+        let prtroll1 = "Press any";
+        let prtroll2 = "key to stop";
+        let prtroll3 = "the dice";
+        let prtwait = "Wait";
+        let prtget = "Get ";
+        let prtpips = " pips";
+        let prtturn = "'s turn";
+
         return this;
     }
 
-    method void print(String msg, int row, int col) {
-        do Output.moveCursor(row, col);
-        do Output.printString(msg);
-        do msg.dispose();
-        return;
-    }
-
     function void drawMap(){
-        
+
         //corners and center
         do Screen.setColor(1);
         do Screen.drawRectangle(0, 0, 255, 1); //top-boarder
@@ -37,7 +51,7 @@ class Game{
         do Screen.drawRectangle(0, 213, 255, 214); //bottom-inner
         do Screen.drawRectangle(42, 0, 43, 255); //left-inner
         do Screen.drawRectangle(213, 0, 214, 255); //right-inner
-        
+
         do Screen.drawRectangle(44, 35, 212, 35); //up-line
         do Screen.drawRectangle(35, 44, 35, 212); //left-line
         do Screen.drawRectangle(221, 44, 221, 212); //right-line
@@ -171,7 +185,7 @@ class Game{
         //39
         do Game.drawC(223, 196);
         do Game.drawM(229, 196);
-        
+
         do Screen.setColor(1);
         do Game.drawGo(219, 216);
         do Game.drawCar(5,2);
@@ -202,7 +216,7 @@ class Game{
     function void drawProperties(int category, int x, int y){
         var int memAddress;
         var int xWordOffset;
-        
+
         if (category = 1) { //cross
             do Screen.drawRectangle(x+1, y+3, x+18, y+4);
             do Screen.drawRectangle(x+9, y+1, x+10, y+6);
@@ -223,7 +237,7 @@ class Game{
 	        return;
         }
 
-        
+
         if (category = 4) { //diagonal cross
             do Screen.drawRectangle(x+1, y+1, x+4, y+1);
             do Screen.drawRectangle(x+15, y+1, x+18, y+1);
@@ -322,7 +336,7 @@ class Game{
         do Screen.drawPixel(x+25, y+22);
         do Screen.drawRectangle(x+7, y+19, x+8, y+20);  
         do Screen.drawRectangle(x+22, y+19, x+23, y+20); 
-    
+
         do Screen.setColor(1);
 
         return;
@@ -468,7 +482,7 @@ class Game{
         do Screen.drawPixel(x - 5, y + 16);
         do Screen.drawPixel(x - 2, y + 15);
         do Screen.drawPixel(x - 4, y + 15);
-    
+
         return;
     }
 
@@ -489,7 +503,7 @@ class Game{
         do Screen.drawPixel(x-2, y-12);
         do Screen.drawPixel(x-9, y-5);
         do Screen.drawPixel(x-2, y-5);
-        
+
         do Screen.drawPixel(x-5, y-7);
         do Screen.drawPixel(x-5, y-10);
         do Screen.drawRectangle(x-7, y-6, x-6, y-6);
@@ -520,7 +534,7 @@ class Game{
         do Screen.drawPixel(x+7, y-10);
 
         do Screen.setColor(1);
-        
+
 	    return;
     }
 
@@ -545,7 +559,7 @@ class Game{
         do Screen.drawRectangle(x+4, y+10, x+10, y+10);
 
         do Screen.setColor(1);
-        
+
 	    return;
     }
 
@@ -589,11 +603,13 @@ class Game{
             let player = players[index];
             let id = player.getID();
             let balance = player.getBalance();
-            do print("Player ", 1+(4*index), 35);
+            do Output.moveCursor(1+(4*index), 35);
+            do Output.printString(prtplayer);
             do Output.printInt(id+1);
-            do print("balance: $", 1+(4*index), 46);
+            do Output.printString(prtmoney);
             do Output.printInt(balance);
-            do print("OutJailCards: ", 2+(4*index), 35);
+            do Output.moveCursor(1+(4*index)+1, 35);
+            do Output.printString(prtoutjail);
             do Output.printInt(player.getGetOutJails());
             let index = index + 1;
         }
@@ -633,7 +649,7 @@ class Game{
             do Screen.drawCircle(410+(50*dice), 220, 3);
             do Screen.drawCircle(430+(50*dice), 220, 3);
         }
-        
+
         return;
     }
 
@@ -678,9 +694,12 @@ class Game{
     function int rollDice() {
         var int n;
         var int pips;
-        do print("Press any", 19, 35);
-        do print("key to stop", 20, 35);
-        do print("the dice", 21, 35);
+        do Output.moveCursor(19, 35);
+        do Output.printString(prtroll1);
+        do Output.moveCursor(20, 35);
+        do Output.printString(prtroll2);
+        do Output.moveCursor(21, 35);
+        do Output.printString(prtroll3);
         let n=1;
         while (~(Keyboard.keyPressed())) {
             let n=n+1;
@@ -689,16 +708,21 @@ class Game{
             }
             do Game.drawPips(n, 0);
         }
+        do Sys.wait(5);
         let pips = n;
         do Screen.setColor(0);
         do Screen.drawRectangle(280, 205, 370, 250);
-        do print("Please wait", 19, 35);
+        do Output.moveCursor(20, 35);
+        do Output.printString(prtwait);
         do Sys.wait(500);
         do Screen.setColor(0);
         do Screen.drawRectangle(280, 205, 370, 250);
-        do print("Press any", 19, 35);
-        do print("key to stop", 20, 35);
-        do print("the dice", 21, 35);
+        do Output.moveCursor(19, 35);
+        do Output.printString(prtroll1);
+        do Output.moveCursor(20, 35);
+        do Output.printString(prtroll2);
+        do Output.moveCursor(21, 35);
+        do Output.printString(prtroll3);
         while (~(Keyboard.keyPressed())) {
             let n=n+1;
             if (n > 6) {
@@ -709,9 +733,10 @@ class Game{
         let pips = pips + n;
         do Screen.setColor(0);
         do Screen.drawRectangle(280, 205, 370, 250);
-        do print("Get ", 20, 35);
+        do Output.moveCursor(20, 35);
+        do Output.printString(prtget);
         do Output.printInt(pips);
-        do print(" pips!", 20, 40);
+        do Output.printString(prtpips);
         return (pips);
     }
 
@@ -743,11 +768,14 @@ class Game{
             let tmp = tmp+1;
         }
         while (~end){
+            do Output.moveCursor(18, 5);
+            do Output.printInt(Memory.alloc(1));
             let currentPlayer = players[nowIndex];
 
-            do print("Player ", 5, 8);
+            do Output.moveCursor(5, 8);
+            do Output.printString(prtplayer);
             do Output.printInt(nowIndex+1);
-            do print("'s turn!", 5, 16);
+            do Output.printString(prtturn);
 
             let pips = Game.rollDice();
 
@@ -785,16 +813,16 @@ class Game{
         return;
     }
 
-function void drawMoney(int x, int y){
+    function void drawMoney(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+2, y+1, x+4, y+1);
         do Screen.drawRectangle(x+1, y+3, x+4, y+3);
         do Screen.drawRectangle(x+1, y+5, x+4, y+5);
         do Screen.drawRectangle(x+2, y+1, x+2, y+5);
-        
+
         return;
     }
-	
+
     function void draw0(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+3, y+5);
@@ -803,10 +831,10 @@ function void drawMoney(int x, int y){
         do Screen.drawRectangle(x+2, y+2, x+2, y+4);
 
         do Screen.setColor(1);
-        
+
         return;
     }
-	
+
     function void draw1(int x, int y){
         do Screen.setColor(1);
         do Screen.drawPixel(x+1, y+1);
@@ -890,7 +918,7 @@ function void drawMoney(int x, int y){
     function void draw8(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+3, y+5);
-        
+
         do Screen.setColor(0);
         do Screen.drawPixel(x+2, y+2);
         do Screen.drawPixel(x+2, y+4);
@@ -903,13 +931,13 @@ function void drawMoney(int x, int y){
     function void draw9(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+3, y+5);
-        
+
         do Screen.setColor(0);
         do Screen.drawPixel(x+2, y+2);
         do Screen.drawRectangle(x+1, y+4, x+2, y+4);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
@@ -917,13 +945,13 @@ function void drawMoney(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+2, x+4, y+5);
         do Screen.drawRectangle(x+2, y+1, x+3, y+1);
-        
+
         do Screen.setColor(0);
         do Screen.drawRectangle(x+2, y+2, x+3, y+3);
         do Screen.drawRectangle(x+2, y+5, x+3, y+5);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
@@ -932,25 +960,25 @@ function void drawMoney(int x, int y){
         do Screen.drawRectangle(x+1, y+1, x+3, y+5);
         do Screen.drawPixel(x+4, y+2);
         do Screen.drawPixel(x+4, y+4);
-        
+
         do Screen.setColor(0);
         do Screen.drawRectangle(x+2, y+2, x+3, y+2);
         do Screen.drawRectangle(x+2, y+4, x+3, y+4);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
     function void drawC(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+4, y+5);
-        
+
         do Screen.setColor(0);
         do Screen.drawRectangle(x+2, y+2, x+4, y+4);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
@@ -958,25 +986,25 @@ function void drawMoney(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+3, y+5);
         do Screen.drawRectangle(x+4, y+2, x+4, y+4);
-        
+
         do Screen.setColor(0);
         do Screen.drawRectangle(x+2, y+2, x+3, y+4);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
     function void drawE(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+4, y+5);
-        
+
         do Screen.setColor(0);
         do Screen.drawRectangle(x+2, y+2, x+4, y+2);
         do Screen.drawRectangle(x+2, y+4, x+4, y+4);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
@@ -987,7 +1015,7 @@ function void drawMoney(int x, int y){
         do Screen.drawRectangle(x+2, y+3, x+4, y+3);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
@@ -998,37 +1026,44 @@ function void drawMoney(int x, int y){
         do Screen.drawRectangle(x+2, y+5, x+4, y+5);
         do Screen.drawRectangle(x+4, y+3, x+4, y+4);
         do Screen.drawPixel(x+3, y+3);
-        
+
         return;
     }
-    
+
     function void drawH(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+1, y+5);
         do Screen.drawRectangle(x+4, y+1, x+4, y+5);
         do Screen.drawRectangle(x+2, y+3, x+3, y+3);
-        
+
         return;
     }
 
     //I,J,K
-    
+
     function void drawL(int x, int y){
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+1, y+5);
         do Screen.drawRectangle(x+1, y+5, x+4, y+5);
-        
+
         return;
     }
 
     function void drawM(int x, int y){ //wide
+        do Screen.setColor(1);
+        do Screen.drawRectangle(x+1, y+1, x+5, y+5);
+
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+2, y+2, x+2, y+5);
+        do Screen.drawRectangle(x+4, y+2, x+4, y+5);
+
         do Screen.setColor(1);
         do Screen.drawRectangle(x+1, y+1, x+1, y+5);
         do Screen.drawRectangle(x+5, y+1, x+5, y+5);
         do Screen.drawRectangle(x+3, y+3, x+3, y+5);
         do Screen.drawPixel(x+2, y+2);
         do Screen.drawPixel(x+4, y+2);
-        
+
         return;
     }
 
@@ -1038,7 +1073,7 @@ function void drawMoney(int x, int y){
         do Screen.drawRectangle(x+4, y+1, x+4, y+5);
         do Screen.drawPixel(x+2, y+2);
         do Screen.drawPixel(x+3, y+3);
-        
+
         return;
     }
 
@@ -1050,7 +1085,7 @@ function void drawMoney(int x, int y){
         do Screen.drawRectangle(x+2, y+2, x+3, y+4);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
@@ -1063,7 +1098,7 @@ function void drawMoney(int x, int y){
         do Screen.drawRectangle(x+2, y+2, x+3, y+2);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
@@ -1079,7 +1114,7 @@ function void drawMoney(int x, int y){
         do Screen.drawPixel(x+4, y+3);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
@@ -1092,7 +1127,7 @@ function void drawMoney(int x, int y){
         do Screen.drawRectangle(x+1, y+4, x+3, y+4);
 
         do Screen.setColor(1);
-        
+
         return;
     }
 
@@ -1127,11 +1162,11 @@ function void drawMoney(int x, int y){
         do Screen.setColor(0);
         do Screen.drawPixel(x+1, y+3);
         do Screen.drawPixel(x+4, y+3);
-        
+
         do Screen.setColor(1);
 
         return;
-        
+
         return;
     }
 
@@ -1171,5 +1206,4 @@ function void drawMoney(int x, int y){
 
         return;
     }
-
 }
