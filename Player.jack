@@ -11,11 +11,27 @@ class Player {
     field int trains;
     field int jailTurns;
     field int numHouses;
-    field Array xCoordinate;
-    field Array yCoordinate;
+    static Array xCoordinate;
+    static Array yCoordinate;
 
     constructor Player new() {
-        //coordinate
+        
+        let id = idCounter;
+        let idCounter = idCounter + 1;
+
+        let location = 0;
+        let inJail = false;
+        let balance = 1500;
+        
+        let getOutJails = 0;
+        let infras = 0;
+        let trains = 0;
+        let jailTurns = 0;
+        
+        return this;
+    }
+
+    function void init() {
         let xCoordinate = Array.new(40);
         let yCoordinate = Array.new(40);
         let xCoordinate[0] = 226;
@@ -98,23 +114,6 @@ class Player {
         let yCoordinate[38] = 177;
         let xCoordinate[39] = 235;
         let yCoordinate[39] = 196;
-        
-        let id = idCounter;
-        let idCounter = idCounter + 1;
-
-        let location = 0;
-        let inJail = false;
-        let balance = 1500;
-        
-        let getOutJails = 0;
-        let infras = 0;
-        let trains = 0;
-        let jailTurns = 0;
-        
-        return this;
-    }
-
-    function void init() {
         let idCounter = 0;
         return;
     }
