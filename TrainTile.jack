@@ -130,4 +130,10 @@ class TrainTile {
 
         return;
     }
+     method void resetOwnerIfMatch(Player p) {
+        if (owner = p) {
+            let owner = null; 
+        }
+        return;
+    }
 }
