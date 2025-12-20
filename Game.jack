@@ -14,16 +14,16 @@ class Game{
     static String prtturn;
 
     constructor Game new() {
+		let board = Board.new();
         do Player.init();
+        do PropertyTile.init();
+        do TrainTile.init();
         let players = Array.new(4);
         let players[0] = Player.new();
         let players[1] = Player.new(); 
         let players[2] = Player.new();
         let players[3] = Player.new();
-
-		let board = Board.new();
         do board.setPlayer(players, 4);
-        do PropertyTile.init();
 
         let prtplayer = "Player ";
         let prtmoney = "   balance: $";

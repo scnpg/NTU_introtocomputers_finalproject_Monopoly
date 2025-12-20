@@ -2,11 +2,37 @@ class TrainTile {
 
     field int basePrice; 
     field Player owner;
+    static String prtnull1;
+    static String prtnull2;
+    static String prtnull3;
+    static String prtnull4;
+    static String prtnull5;
+    static String prtother1;
+    static String prtother2;
+    static String prtother3;
+    static String prtself1;
+    static String prtself2;
+    static String prtself3;
 
     constructor TrainTile new(int price) {
         let basePrice = price;
         let owner = null;
         return this;
+    }
+
+    function void init(){
+        let prtnull1 = "This is an unclaimed";
+        let prtnull2 = "railway land";
+        let prtnull3 = "Its price is $";
+        let prtnull4 = "Press Y to buy it";
+        let prtnull5 = "Press N to skip it";
+        let prtother1 = "This railway";
+        let prtother2 = "is owned by player ";
+        let prtother3 = "You need to pay $";
+        let prtself1 = "This railway";
+        let prtself2 = "is owned by yourself";
+        let prtself3 = "Nothing happens";
+        return;
     }
 
     method void print(String msg, int row) {
@@ -54,12 +80,17 @@ class TrainTile {
         var int buy;
         
         if (owner = null) {
-            do print("This is a unclaimed", 0);
-            do print("railway land", 1);
-            do print("Its price is $", 2);
+            do Output.moveCursor(7, 7);
+            do Output.printString(prtnull1);
+            do Output.moveCursor(8, 9);
+            do Output.printString(prtnull2);
+            do Output.moveCursor(9, 7);
+            do Output.printString(prtnull3);
             do Output.printInt(basePrice);
-            do print("Press Y to buy it", 3);
-            do print("Press N to skip it", 4);
+            do Output.moveCursor(10, 7);
+            do Output.printString(prtnull4);
+            do Output.moveCursor(11, 7);
+            do Output.printString(prtnull5);
             while(~(buy = 89) & ~(buy = 121) & ~(buy = 78) & ~(buy = 110)){
                 let buy = Keyboard.keyPressed();
             }
@@ -73,16 +104,30 @@ class TrainTile {
         
         if (~(owner = p)) { 
             let rentDue = calculateRent(); 
-             do print("This railway", 0);
-            do print("is owned by player ", 1);
+            do Output.moveCursor(7, 10);
+            do Output.printString(prtother1);
+            do Output.moveCursor(8, 7);
+            do Output.printString(prtother2);
             do Output.printInt(owner.getID());
-            do print("You need to pay $", 2);
+            do Output.moveCursor(9, 7);
+            do Output.printString(prtother3);
             do Output.printInt(rentDue);
             do Sys.wait(25);
             do p.pay(rentDue, board);
             do owner.receive(rentDue);
             do Sys.wait(300);
         }
+
+        if (owner = p) {
+            do Output.moveCursor(7, 10);
+            do Output.printString(prtself1);
+            do Output.moveCursor(8, 7);
+            do Output.printString(prtself2);
+            do Output.moveCursor(9, 9);
+            do Output.printString(prtself3);
+            do Sys.wait(300);
+        }
+
         return;
     }
 }
