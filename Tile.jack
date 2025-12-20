@@ -141,6 +141,19 @@ class Tile {
     method int getType() {
         return type;
     }
+    method void reset(Player p) {
+        if(type = PROPERTY) {
+            do pTile.resetOwnerIfMatch(p);
+            return;
+        }
+        if(type = INFRASTRUCTURE) {
+            do iTile.resetOwnerIfMatch(p);
+            return;
+        }
+        if(type = TRAIN) {
+            do trTile.resetOwnerIfMatch(p);
+            return;
+        }
+        return;
+    }
 }
-
-
