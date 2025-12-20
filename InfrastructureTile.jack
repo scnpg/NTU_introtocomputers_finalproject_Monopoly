@@ -32,6 +32,8 @@ class InfrastructureTile {
         let prtother1 = "This infrastructure";
         let prtother2 = "is owned by player ";
         let prtother3 = "You need to pay $";
+        let prtother4 = "Roll the dice to";
+        let prtother5 = "decide the payment";
         return;
     }
 
@@ -111,14 +113,20 @@ class InfrastructureTile {
             return;
         }
         if (~(owner = p)) {
-            let rentDue = calculateRent(board); 
-
             do Output.moveCursor(7, 7);
             do Output.printString(prtother1);
             do Output.moveCursor(8, 7);
             do Output.printString(prtother2);
             do Output.printInt(owner.getID() + 1);
             do Output.moveCursor(9, 7);
+            do Output.printString(prtother4);
+            do Output.moveCursor(10, 7);
+            do Output.printString(prtother5);
+            let rentDue = calculateRent(board); 
+
+            do Sys.wait(30);
+
+            do Output.moveCursor(11, 7);
             do Output.printString(prtother3);
             do Output.printInt(rentDue);
             do Sys.wait(25);

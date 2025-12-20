@@ -108,7 +108,7 @@ class TrainTile {
             do Output.printString(prtother1);
             do Output.moveCursor(8, 7);
             do Output.printString(prtother2);
-            do Output.printInt(owner.getID());
+            do Output.printInt(owner.getID() + 1);
             do Output.moveCursor(9, 7);
             do Output.printString(prtother3);
             do Output.printInt(rentDue);
