@@ -125,6 +125,7 @@ class Tile {
             return;
         }
         if (type = JAIL) {
+            do jailTile.activate(p);
             return;
         }
         if (type = GOTO_JAIL) {

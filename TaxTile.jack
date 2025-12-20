@@ -1,14 +1,35 @@
 class TaxTile {
 
     field int taxAmount; 
+    static String tax1;
+    static String tax2;
+    static String tax31;
+    static String tax32;
 
     constructor TaxTile new(int amount) {
         let taxAmount = amount;
         return this;
     }
+    function void init(){
+        let tax1 = "This is a tax tile";
+        let tax2 = "You have to pay";
+        let tax31 = "$";
+        let tax32 = " in tax";
+        return;
+    }
 
     method void activate(Player p, Board board) {
+        do Output.moveCursor(7, 7);
+        do Output.printString(tax1);
+        do Output.moveCursor(8, 7);
+        do Output.printString(tax2);
+        do Output.moveCursor(9, 8);
+        do Output.printString(tax31);
+        do Output.printInt(taxAmount);
+        do Output.printString(tax32);
+        do Sys.wait(25);
         do p.pay(taxAmount, board);
+        do Sys.wait(500);
         return;
     }
     

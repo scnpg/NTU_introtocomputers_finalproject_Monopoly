@@ -17,6 +17,13 @@ class Player {
     static String prtnotbuy;
     static String prtgo1;
     static String prtgo2;
+    static String prtjail1;
+    static String prtjail2;
+    static String prtjail3;
+    static String prtjail4;
+    static String prtjail5;
+    static String prtjail61;
+    static String prtjail62;
 
     constructor Player new() {
         
@@ -123,6 +130,13 @@ class Player {
         let prtnotbuy = "Not enough money!";
         let prtgo1 = "Passed GO!";
         let prtgo2 = "Gained $200.";
+        let prtjail1 = "You're sent to jail";
+        let prtjail2 = "You have ";
+        let prtjail3 = "OutJailCards";
+        let prtjail4 = "You are released!";
+        let prtjail5 = "You have to stay";
+        let prtjail61 = "here for ";
+        let prtjail62 = " rounds";
         return;
     }
 
@@ -246,9 +260,32 @@ class Player {
     method void goToJail() {
         let inJail = true;
         do Player.drawClearPlayer(id, xCoordinate[location], yCoordinate[location]);
+        do Sys.wait(25);
         let location = 10;
         do Player.drawPlayer(id, 29, 219); //牢房的座標
         let jailTurns = 0;
+        do Output.moveCursor(7, 7);
+        do Output.printString(prtjail1);
+        do Output.moveCursor(8, 10);
+        do Output.printString(prtjail2);
+        do Output.printInt(getOutJails);
+        do Output.moveCursor(9, 9);
+        do Output.printString(prtjail3);
+        if(getOutJails>0){
+            do Output.moveCursor(10, 7);
+            do Output.printString(prtjail4);
+            do useGetOutOfJailCard();
+        }
+        else{
+            do Output.moveCursor(10, 7);
+            do Output.printString(prtjail5);
+            do Output.moveCursor(11, 7);
+            do Output.printString(prtjail61);
+            do Output.printInt((3-jailTurns));
+            do Output.printString(prtjail62);
+            let jailTurns = jailTurns+1;
+        }
+        do Sys.wait(1000);
         return;
     }
 

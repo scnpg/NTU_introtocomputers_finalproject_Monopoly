@@ -1,12 +1,41 @@
 class JailTile {
 
     field int oiiai;
+    static String prtjailt1;
+    static String prtjailt2;
+    static String prtjailt3;
+    static String prtjailt41;
+    static String prtjailt4;
     
     constructor JailTile new() {
+        let prtjailt1 = "This is a jail tile";
+        let prtjailt2 = "Nothing happens";
+        let prtjailt3 = "You have to stay";
+        let prtjailt41 = "here for ";
+        let prtjailt42 = " rounds";
         return this;
     }
 
     method void activate(Player p) {
+        if(p.isInJail()){
+            do Output.moveCursor(7, 7);
+            do Output.printString(prtjailt3);
+            do Output.moveCursor(8, 7);
+            do Output.printString(prtjailt41);
+            do Output.printInt((3-p.getJailTurns()));
+            do Output.printString(prtjailt42);
+            do p.incrementJailTurns();
+            if(p.getJailTurns()>2){
+                do p.leaveJail();
+            }
+        }
+        else{
+            do Output.moveCursor(7, 7);
+            do Output.printString(prtjailt1);
+            do Output.moveCursor(8, 8);
+            do Output.printString(prtjailt2);
+        }
+        do Sys.wait(1000);
         return;
     }
     

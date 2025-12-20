@@ -76,7 +76,6 @@ class Board{
 
     method void sendToJail(Player p){
         do p.goToJail();
-
         return;
     }
 
