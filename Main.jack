@@ -17,6 +17,7 @@ class Main{
         var int heigh;
         var int key;
         var Game game;
+        var int winner;
         let heigh = 10;
         do Main.printCenter("MONOPOLY", heigh);
         let heigh = heigh + 2;
@@ -30,7 +31,11 @@ class Main{
         do Sys.wait(1000);
         do Screen.clearScreen();
         let game = Game.new();
-        do game.start();
+        let winner = game.start();
+        do Screen.clearScreen();
+        do Main.printCenter("MONOPOLY game end", 10);
+        do Main.printCenter("The winner is Player ", 12);
+        do Output.printInt(winner);
         return;
     }
 

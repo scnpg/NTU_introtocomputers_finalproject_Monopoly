@@ -136,10 +136,12 @@ class Board{
             let t=tiles[i];
             do t.reset(p);
             let i = i + 1;
-         }
-         return;
-     }
-      method int getBankruptCount() {
+        }
+        do Sys.wait(500);
+        return;
+    }
+    
+    method int getBankruptCount() {
         return bankruptCount;
     }
 

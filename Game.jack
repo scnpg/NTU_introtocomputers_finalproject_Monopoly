@@ -746,7 +746,7 @@ class Game{
     //     return players[index];
     // }
 
-    method void start() {
+    method int start() {
         var boolean end; // 遊戲結束
         var int pips; // 點數
         var Player currentPlayer; // 當下玩家
@@ -814,7 +814,16 @@ class Game{
                 let end = true;
             }
         }
-        return;
+        do Sys.wait(1000);
+        let tmp=0;
+        while(tmp<4){
+            let currentPlayer = players[tmp];
+            if(~(currentPlayer.isBankrupt())){
+                return (tmp+1);
+            }
+            let tmp = tmp+1;
+        }
+        return (tmp+1);
     }
 
     function void drawMoney(int x, int y){
