@@ -9,6 +9,8 @@ class Tile {
     static int INFRASTRUCTURE; // 7 (Utility)
     static int GO;           // 8
     static int TRAIN;        // 9 (Railroad)
+    static String prtpark1;
+    static String prtpark2;
 
     field int type;
     field PropertyTile pTile;
@@ -32,6 +34,8 @@ class Tile {
         let INFRASTRUCTURE = 7;
         let GO = 8;
         let TRAIN = 9;
+        let prtpark1 = "This is a parking";
+        let prtpark2 = "tile, get a rest";
         return;
     }
 
@@ -133,6 +137,10 @@ class Tile {
             return;
         }
         if (type = PARKING) {
+            do Output.moveCursor(7, 7);
+            do Output.printString(prtpark1);
+            do Output.moveCursor(8, 7);
+            do Output.printString(prtpark2);
             return;
         }
         return;

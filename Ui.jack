@@ -6,9 +6,9 @@ class Ui {
     static String prtnull2;
     static String prtnull3;
     static String prtnull4;
-    static String nullPro;
-    static String nullInf;
-    static String nullTra;
+    static String prtnullPro;
+    static String prtnullInf;
+    static String prtnullTra;
     static String prtother1;
     static String prtother2;
     static String prtother3;
@@ -27,9 +27,9 @@ class Ui {
         let prtnull2 = "its price is $";
         let prtnull3 = "Press Y to buy it";
         let prtnull4 = "Press N to skip it";
-        let nullPro = "property land";
-        let nullInf="infrastructure land";
-        let nullTra="railway land";
+        let prtnullPro = "property land";
+        let prtnullInf="infrastructure land";
+        let prtnullTra="railway land";
 
         let prtother1 = "is owned by player ";
         let prtother2 = "You need to pay $";
@@ -56,7 +56,7 @@ class Ui {
         do Output.moveCursor(7, 7);
         do Output.printString(prtnull1);
         do Output.moveCursor(8, 9);
-        do Output.printString(nullPro);
+        do Output.printString(prtnullPro);
         do Output.moveCursor(9, 7);
         do Output.printString(prtnull2);
         do Output.printInt(price);
@@ -71,7 +71,7 @@ class Ui {
         do Output.moveCursor(7, 7);
         do Output.printString(prtnull1);
         do Output.moveCursor(8, 9);
-        do Output.printString(nullInf);
+        do Output.printString(prtnullInf);
         do Output.moveCursor(9, 7);
         do Output.printString(prtnull2);
         do Output.printInt(price);
@@ -86,7 +86,7 @@ class Ui {
         do Output.moveCursor(7, 7);
         do Output.printString(prtnull1);
         do Output.moveCursor(8, 9);
-        do Output.printString(nullTra);
+        do Output.printString(prtnullTra);
         do Output.moveCursor(9, 7);
         do Output.printString(prtnull2);
         do Output.printInt(price);

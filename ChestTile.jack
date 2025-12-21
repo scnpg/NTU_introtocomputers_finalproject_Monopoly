@@ -49,7 +49,7 @@ class ChestTile {
                 do printf("instead of a 10.",3);
                 do printf("You receive a",4);
                 do printf("$200 scholarship.",5);
-                do Sys.wait(1500);
+                do Sys.wait(2000);
 
                 do p.receive(200);
             }
@@ -58,7 +58,7 @@ class ChestTile {
                     // Doctor's fees
                     do printf("You got the flu.",0);
                     do printf("Pay $50",1);
-                    do Sys.wait(500);
+                    do Sys.wait(1000);
 
                     do p.pay(50, board);
                 }
@@ -68,7 +68,7 @@ class ChestTile {
                         do printf("You received $50",0);
                         do printf("from the student",1);
                         do printf("you tutor",2);
-                        do Sys.wait(500);
+                        do Sys.wait(1000);
 
                         do p.receive(50);
                     }
@@ -80,7 +80,7 @@ class ChestTile {
                             do printf("withdrawal form.",2);
                             do printf("Get Out of",3);
                             do printf("Jail +1.",4);
-                            do Sys.wait(1000);
+                            do Sys.wait(2000);
 
                             do p.addGetOutOfJailCard();
                         }
@@ -92,7 +92,7 @@ class ChestTile {
                                 do printf("were put on",2);
                                 do printf("academic probation.",3);
                                 do printf("Go to Jail",4);
-                                do Sys.wait(1000);
+                                do Sys.wait(2000);
 
                                 do board.sendToJail(p);
                             }
@@ -103,7 +103,7 @@ class ChestTile {
                                     do printf("gave you $100",1);
                                     do printf("because you",2);
                                     do printf("won a bet.",3);
-                                    do Sys.wait(1000);
+                                    do Sys.wait(1500);
 
                                     do p.receive(100);
                                 }
@@ -113,7 +113,7 @@ class ChestTile {
                                         do printf("Money fell from",0);
                                         do printf("the sky.",1);
                                         do printf("Receive $20",2);
-                                        do Sys.wait(500);
+                                        do Sys.wait(1500);
 
                                         do p.receive(20);
                                     }
@@ -125,7 +125,7 @@ class ChestTile {
                                             do printf("to join your club.",2);
                                             do printf("Collect $10",3);
                                             do printf("from each player",4);
-                                            do Sys.wait(1500);
+                                            do Sys.wait(2000);
 
                                             do board.receiveFromOther(p, 10);
                                         }
@@ -137,7 +137,7 @@ class ChestTile {
                                                 do printf("passed away.",2);
                                                 do printf("Recieve $100 of",3);
                                                 do printf("his life insurance",4);
-                                                do Sys.wait(1500);
+                                                do Sys.wait(2000);
 
                                                 do p.receive(100);
                                             }
@@ -149,7 +149,7 @@ class ChestTile {
                                                     do printf("on a bike.",2);
                                                     do printf("Pay $100 to",3);
                                                     do printf("the hospital",4);
-                                                    do Sys.wait(1000);
+                                                    do Sys.wait(1500);
 
                                                     do p.pay(100, board);
                                                 }
@@ -160,7 +160,7 @@ class ChestTile {
                                                         do printf("much mobile data",1);
                                                         do printf("this month.",2);
                                                         do printf("Pay $50",3);
-                                                        do Sys.wait(1000);
+                                                        do Sys.wait(1500);
 
                                                         do p.pay(50, board);
                                                     }
@@ -170,7 +170,7 @@ class ChestTile {
                                                             do printf("Corporate greed",0);
                                                             do printf("lures you in,",1);
                                                             do printf("receive $100.",2);
-                                                            do Sys.wait(1000);
+                                                            do Sys.wait(1500);
 
                                                             do p.receive(100);
                                                         }
@@ -182,7 +182,7 @@ class ChestTile {
                                                                 do printf("by the typhoon.",2);
                                                                 do printf("Pay $40 per",3);
                                                                 do printf("house for repairs.",4);
-                                                                do Sys.wait(1500);
+                                                                do Sys.wait(2000);
 
                                                                 let houses = p.getNumHouses();
                                                                 let cost = Math.multiply(40, houses);
@@ -195,7 +195,7 @@ class ChestTile {
                                                                     do printf("appreciates you.",1);
                                                                     do printf("You receive a",2);
                                                                     do printf("hug and $10.",3);
-                                                                    do Sys.wait(1000);
+                                                                    do Sys.wait(1500);
 
                                                                     do p.receive(10);
                                                                 }
@@ -207,7 +207,7 @@ class ChestTile {
                                                                         do printf("have seen.",2);
                                                                         do printf("They gave you",3);
                                                                         do printf("$100 to shut up.",4);
-                                                                        do Sys.wait(1500);
+                                                                        do Sys.wait(2000);
 
                                                                         do p.receive(100);
                                                                     }
