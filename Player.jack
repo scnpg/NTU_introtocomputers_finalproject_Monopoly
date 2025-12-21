@@ -241,13 +241,13 @@ class Player {
             do pay(price, board);
             do i.setOwner(this);
             let infras = infras + 1;
-            do Output.moveCursor(9, 8);
+            do Output.moveCursor(13, 8);
             do Output.printString(prtbuy);
             do Sys.wait(500);
         }
 
         else{
-            do Output.moveCursor(9, 7);
+            do Output.moveCursor(13, 7);
             do Output.printString(prtnotbuy);
             do Sys.wait(500);
         }
