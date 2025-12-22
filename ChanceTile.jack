@@ -101,8 +101,8 @@ class ChanceTile {
                         else {
                             if (c = 5) {
                                 do printf("After much hard",0);
-                                do printf("work, you received",1);
-                                do printf("a scholarship of $150",2);
+                                do printf("work,you received a",1);
+                                do printf("scholarship of $150",2);
                                 do Sys.wait(1500);
                                 // Receive $150
                                 do p.receive(150);
