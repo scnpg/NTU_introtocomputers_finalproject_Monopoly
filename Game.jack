@@ -12,6 +12,7 @@ class Game{
     static String prtget;
     static String prtpips;
     static String prtturn;
+    static String prtspace;
 
     constructor Game new() {
 		let board = Board.new();
@@ -36,6 +37,7 @@ class Game{
         let prtget = "Get ";
         let prtpips = " pips";
         let prtturn = "'s turn";
+        let prtspace = "   ";
 
         return this;
     }
@@ -587,6 +589,7 @@ class Game{
             do Output.printInt(id+1);
             do Output.printString(prtmoney);
             do Output.printInt(balance);
+            do Output.printString(prtspace);
             do Output.moveCursor(1+(4*index)+1, 35);
             do Output.printString(prtoutjail);
             do Output.printInt(player.getGetOutJails());
@@ -1033,7 +1036,7 @@ class Game{
 
     function void drawI(int x, int y){
         do Screen.setColor(1);
-        do Screen.drawRectangle(x+1, y+1, x+4, y+5);
+        do Screen.drawRectangle(x+1, y+1, x+4, y+1);
         do Screen.drawRectangle(x+2, y+1, x+3, y+5);
         do Screen.drawRectangle(x+1, y+5, x+4, y+5);
 
