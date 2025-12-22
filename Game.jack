@@ -96,6 +96,8 @@ class Game{
         do Screen.drawRectangle(221, 63, 221, 80); //right-line(chest)
         do Screen.drawRectangle(63, 221, 80, 221); //down-line(chance)
         do Screen.drawRectangle(63, 35, 80, 35); //up-line(chance)
+        do Screen.drawRectangle(158, 35, 175, 35); //up-line(water)
+        do Screen.drawRectangle(35, 158, 35, 175); //left-line(electricity)
 
         do Screen.setColor(1); //properties
         do Game.drawProperties(1, 138, 214); //1
@@ -207,8 +209,8 @@ class Game{
         do Game.drawChance2(62,35);
         do Game.drawTax(221, 177);
         do Game.drawTax2(35, 63);
-        do Game.drawElectricity(35, 175);
-        do Game.drawWater(157, 35);
+        do Game.drawElectricity(36, 175);
+        do Game.drawWater(157, 37);
         do Game.drawGoToJail(226,4);
         do Game.drawG(215 ,7);
         do Game.drawO(215 ,14);
@@ -502,7 +504,6 @@ class Game{
         do Screen.drawRectangle(x-10, y-13, x-1, y-4);
 
         do Screen.setColor(0);
-        do Screen.drawRectangle(x, y-17, x, y);
         do Screen.drawRectangle(x-9, y-12, x-2, y-5);
         do Screen.drawPixel(x-10, y-4);
         do Screen.drawPixel(x-1, y-4);
@@ -521,10 +522,10 @@ class Game{
         do Screen.drawRectangle(x-6, y-9, x-6, y-8);
         do Screen.drawRectangle(x-7, y-11, x-6, y-11);
 
-        do Screen.drawRectangle(x-11, y-11, x-11, y-6);
-        do Screen.drawRectangle(x-13, y-10, x-13, y-7);
-        do Screen.drawRectangle(x-15, y-10, x-15, y-7);
-        do Screen.drawRectangle(x-16, y-9, x-16, y-8);
+        //do Screen.drawRectangle(x-11, y-11, x-11, y-6);
+        do Screen.drawRectangle(x-12, y-10, x-12, y-7);
+        do Screen.drawRectangle(x-14, y-10, x-14, y-7);
+        do Screen.drawRectangle(x-15, y-9, x-15, y-8);
 
 	    return;
     }
@@ -538,7 +539,6 @@ class Game{
         do Screen.drawRectangle(x+5, y-13, x+14, y-10);
 
         do Screen.setColor(0);
-        do Screen.drawRectangle(x+1, y, x+18, y);
         do Screen.drawPixel(x+8, y-14);
         do Screen.drawPixel(x+7, y-13);
         do Screen.drawPixel(x+7, y-12);

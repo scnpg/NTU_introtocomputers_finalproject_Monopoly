@@ -90,7 +90,7 @@ class Player {
         let xCoordinate[19] = 3;
         let yCoordinate[19] = 44;
         let xCoordinate[20] = 13;
-        let yCoordinate[20] = 22;
+        let yCoordinate[20] = 24;
         let xCoordinate[21] = 44;
         let yCoordinate[21] = 3;
         let xCoordinate[22] = 63;
@@ -130,7 +130,7 @@ class Player {
         let xCoordinate[39] = 235;
         let yCoordinate[39] = 196;
         let idCounter = 0;
-        let prtbuy = "Buy success!";
+        let prtbuy = "Buy successfully!";
         let prtnotbuy = "Not enough money!";
         let prtgo1 = "Passed GO!";
         let prtgo2 = "Gained $200.";
@@ -164,6 +164,7 @@ class Player {
             do Output.moveCursor(8, 9);
             do Output.printString(prtgo2);
             do receive(200); // Collect $200 for passing GO
+            do Sys.wait(500);
         }
 
         if (location < 0) {
@@ -195,7 +196,7 @@ class Player {
             do board.handleBankruptcy(this);
             do Output.moveCursor(12,7);
             do Output.printString(bank);
-            
+            do Sys.wait(1000); //added
         }
         return;
     }
@@ -273,7 +274,7 @@ class Player {
         do Player.drawClearPlayer(id, xCoordinate[location], yCoordinate[location]);
         do Sys.wait(25);
         let location = 10;
-        do Player.drawPlayer(id, 29, 219); //牢房的座標
+        //do Player.drawPlayer(id, 29, 219); //牢房的座標
         let jailTurns = 0;
         do Output.moveCursor(7, 7);
         do Output.printString(prtjail1);
@@ -469,7 +470,7 @@ class Player {
         return;
     }
 
-    function void drawOwner(int id, int x, int y){ //畫出地產擁有者圖示(未完成)
+    function void drawOwner(int id, int x, int y){ //畫出地產擁有者圖示
         let id = id + 1;
         //先處理x,y偏移量
         if (y = 234) { //第一排
