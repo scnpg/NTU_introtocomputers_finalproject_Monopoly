@@ -70,7 +70,7 @@ class Ui {
     function void printInfNull(int price){
         do Output.moveCursor(7, 6);
         do Output.printString(prtnull1);
-        do Output.moveCursor(8, 9);
+        do Output.moveCursor(8, 6);
         do Output.printString(prtnullInf);
         do Output.moveCursor(9, 7);
         do Output.printString(prtnull2);
@@ -99,7 +99,7 @@ class Ui {
     function void printProPay(int rent, int id) {
         do Output.moveCursor(7, 6);
         do Output.printString(otherPro);
-        do Output.moveCursor(8, 7);
+        do Output.moveCursor(8, 6);
         do Output.printString(prtother1);
         do Output.printInt(id);
         do Output.moveCursor(9, 7);
@@ -112,7 +112,7 @@ class Ui {
     function void printInfPay1(int id) {
         do Output.moveCursor(7,6);
         do Output.printString(otherInf);
-        do Output.moveCursor(8, 7);
+        do Output.moveCursor(8, 6);
         do Output.printString(prtother1);
         do Output.printInt(id);
         do Output.moveCursor(9, 7);
@@ -133,7 +133,7 @@ class Ui {
     function void printTraPay(int rent, int id) {
         do Output.moveCursor(7,6);
         do Output.printString(otherTra);
-        do Output.moveCursor(8, 7);
+        do Output.moveCursor(8, 6);
         do Output.printString(prtother1);
         do Output.printInt(id);
         do Output.moveCursor(9, 7);
