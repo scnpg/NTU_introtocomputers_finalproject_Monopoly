@@ -221,6 +221,7 @@ class Player {
             do Sys.wait(50);
             do pay(price, board);
             do p.setOwner(this);
+            do Player.drawOwner(id, xCoordinate[location], yCoordinate[location]);
             do Output.moveCursor(13, 8);
             do Output.printString(prtbuy);
             do Sys.wait(500);
@@ -240,6 +241,7 @@ class Player {
             do Sys.wait(50);
             do pay(price, board);
             do i.setOwner(this);
+            do Player.drawOwner(id, xCoordinate[location], yCoordinate[location]);
             let infras = infras + 1;
             do Output.moveCursor(13, 8);
             do Output.printString(prtbuy);
@@ -259,6 +261,7 @@ class Player {
         if (canAfford(price)) {
             do pay(price, board);
             do t.setOwner(this);
+            do Player.drawOwner(id, xCoordinate[location], yCoordinate[location]);
             let trains = trains + 1;
         }
         return;
@@ -345,6 +348,7 @@ class Player {
         do pay(p.getHouseCost(), board);
         do p.addHouse();
         let numHouses=numHouses+1;
+        do Player.drawLevel(numHouses, xCoordinate[location], yCoordinate[location]);
         do Output.moveCursor(13, 8);
         do Output.printString(prtbuy);
         do Sys.wait(500);
@@ -466,7 +470,7 @@ class Player {
     }
 
     function void drawOwner(int id, int x, int y){ //畫出地產擁有者圖示(未完成)
-        do Screen.setColor(1);
+        let id = id + 1;
         //先處理x,y偏移量
         if (y = 234) { //第一排
             if (x = 120) { //車站(5)
@@ -512,6 +516,10 @@ class Player {
             }
         }
 
+        do Screen.setColor(0);
+        do Screen.drawRectangle(x+1, y+1, x+5, y+5);
+        do Screen.setColor(1);
+
         if (id = 1){ //spade
             do Screen.drawRectangle(x+3, y+1, x+3, y+5);
             do Screen.drawRectangle(x+2, y+2, x+4, y+2);
@@ -547,7 +555,7 @@ class Player {
                 let y = y - 6;
         }
         if (x = 3){ //電力(13)和車站(15)   
-            let x = x + 26;
+            let x = x + 25;
             let y = y + 6;
         }
         if (y = 3) { //第三排
@@ -555,7 +563,7 @@ class Player {
             let y = y + 25;
         }
         if (x = 235) { //第四排
-            let x = x - 5;
+            let x = x - 6;
             let y = y + 6;
         }
 
