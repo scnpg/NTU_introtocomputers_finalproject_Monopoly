@@ -6,7 +6,7 @@ class ChestTile {
         return this;
     }
     method void printf(String msg, int row) {
-        do Output.moveCursor(7+row, 7);
+        do Output.moveCursor(7+row, 6);
         do Output.printString(msg);
         do msg.dispose();
         return;
