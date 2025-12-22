@@ -16,6 +16,7 @@ class ParkingTile {
     method void activate(Player p) {
         do print("This is a parking tile", 0);
         do print("Nothing happens", 1);
+        do Sys.wait(500);
         return;
     }
 }
